@@ -1,0 +1,26 @@
+Paper Section X claim check (25 claims, 0 failing)
+PASS  P01  five functional blocks: safety FSM, motor controller, encoder interface, communication interface, register file   [['safety', 'motor', 'encoder', 'comm', 'regfile']]
+PASS  P02  Eq.(2) weights all unity in every reported profile   [{'s2a_all3_evid': [1, 1, 1, 1, 1], 's3_obs': [1, 1, 1, 1, 1], 's3_obs_esc': [1, 1, 1, 1, 1], 's3_obs_esc_stale': [1, 1, 1, 1, 1]}]
+PASS  P03  obs_en, esc_en, stale_en are disabled by default   [(0, 0, 0)]
+PASS  P04  escalation interval is 10 scheduler ticks (esc_gap)
+PASS  P05  600-tick synthetic mission trace   [600 rows]
+PASS  P06  20,000 modeled cycles per tick
+PASS  P07  collapsed fault database containing 2,515 faults   [2515 rows]
+PASS  P07b  committed fault_db / atpg_stats / mission_trace are the ones the campaign ran on (sha256 match campaign meta)
+PASS  P08  development seeds: 2024 (mission), 4242 (fault injection)
+PASS  P09  transient faults are removed after 60 ticks
+PASS  P10  one injected fault per episode (episodes == faults)
+PASS  P11  2,451 of 2,515 persistent episodes raised a flag under the reference profile
+PASS  P12  reference cleared flags while the fault was present in 117 flagged episodes
+PASS  P13  obs_en reduces that count to zero
+PASS  P14  obs_en alone: none of the 2,440 flagged transient episodes recovered
+PASS  P15  obs_en+esc_en: zero premature clearances (persistent and transient)
+PASS  P16  obs_en+esc_en: recovery in 2,267 of the 2,440 flagged transient episodes
+PASS  P17  remaining 173 transient episodes ended without recovery
+PASS  P18  mean mission-interruption cycles (persistent): 469,680 / 486,764 / 526,202   [[469680, 486764, 526202]]
+PASS  P19  increases of approximately 3.6% and 12.0% vs the reference   [3.64%, 12.03%]
+PASS  P20  Table IV transient reference row (2,174 recovered / 112 premature / 155 at end)
+PASS  P21  stale_en profile does not change any reported result within the 600-tick mission
+PASS  P22  ACTIVE state issues only the lightweight online test (Algorithm 1) in the fault-free mission   [[8]]
+PASS  P23  IDLE state issues full-depth tests (FULL bit set on every IDLE decision)   [[17, 21]]
+PASS  P24  Step-3 Phase-1 test log reports 18/18 passed   [STEP-3 PHASE-1 TESTS: 18/18 passed]

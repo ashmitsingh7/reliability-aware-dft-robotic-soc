@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+build/*.vvp
+build/step1/
+build/step1_rtl/
+build/step3_rtl/
+build/step2a*/
+
+# Local Python environment
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local validation logs
+local_validation_*.log

@@ -1,0 +1,606 @@
+{
+ "meta": {
+  "faults": 2515,
+  "episodes": 2515,
+  "mission_ticks": 600,
+  "injection_seed": 4242,
+  "mission_seed": 2024,
+  "transient_ticks": 60,
+  "fault_db_sha256": "a744127a1c97bf7d12633f37c3bcf048233dd5096a013eec1fa302ffcf54b6d6",
+  "atpg_stats_sha256": "99148d7e26cc6a55eae739c6725e598b147f7c217ab48a572f7c8b65342e9a34",
+  "mission_trace_sha256": "8b87351c0002db53ee5097400c1358fd6508a34110588c530221dbae4a95a181",
+  "git_commit": "688e9a2d04bf548437ec304890e45aae89ddc36f",
+  "argv": []
+ },
+ "note": "single mission trace, single injection seed: development-seed result only, no multi-seed claim",
+ "profiles": {
+  "s2a_all3_evid": {
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 0,
+    "obs_en": 0,
+    "esc_en": 0,
+    "esc_gap": 10,
+    "stale_en": 0
+   },
+   "persistent": {
+    "kind": "persistent",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2451,
+    "cleared_while_fault_present": 117,
+    "recovered_after_fault_ended": 0,
+    "flagged_at_end": 2383,
+    "mean_flag_set_events": 1.9975520195838434,
+    "max_flag_set_events": 76,
+    "recovery_latency_ticks_median": null,
+    "recovery_latency_ticks_max": null,
+    "mean_degraded_ticks_flagged": 284.14157486740106,
+    "mean_escalations_flagged": 0.0,
+    "mean_total_test_cycles": 798990.951888668,
+    "mean_interruption_cycles": 469679.63976143143,
+    "mean_interruption_cycles_flagged": 481694.6054671563,
+    "mean_escalation_interruption_cycles_flagged": 0.0,
+    "episodes_ending_in_DEGRADED": 2371,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 121,
+      "cleared_while_fault_present": 8,
+      "flagged_at_end": 119
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 572,
+      "cleared_while_fault_present": 27,
+      "flagged_at_end": 558
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 14,
+      "flagged_at_end": 248
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 209,
+      "cleared_while_fault_present": 12,
+      "flagged_at_end": 203
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 56,
+      "flagged_at_end": 1255
+     }
+    }
+   },
+   "transient": {
+    "kind": "transient",
+    "episodes": 2515,
+    "detected": 2440,
+    "flagged": 2440,
+    "cleared_while_fault_present": 112,
+    "recovered_after_fault_ended": 2174,
+    "flagged_at_end": 155,
+    "mean_flag_set_events": 1.1057377049180328,
+    "max_flag_set_events": 10,
+    "recovery_latency_ticks_median": 3,
+    "recovery_latency_ticks_max": 4,
+    "mean_degraded_ticks_flagged": 42.63401639344262,
+    "mean_escalations_flagged": 0.0,
+    "mean_total_test_cycles": 321980.6337972167,
+    "mean_interruption_cycles": 72343.78170974155,
+    "mean_interruption_cycles_flagged": 74274.10286885245,
+    "mean_escalation_interruption_cycles_flagged": 0.0,
+    "episodes_ending_in_DEGRADED": 153,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 120,
+      "cleared_while_fault_present": 8,
+      "flagged_at_end": 5
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 563,
+      "cleared_while_fault_present": 23,
+      "flagged_at_end": 37
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 14,
+      "flagged_at_end": 25
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 208,
+      "cleared_while_fault_present": 11,
+      "flagged_at_end": 7
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 56,
+      "flagged_at_end": 81
+     }
+    }
+   }
+  },
+  "s3_obs": {
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 0,
+    "obs_en": 1,
+    "esc_en": 0,
+    "esc_gap": 10,
+    "stale_en": 0
+   },
+   "persistent": {
+    "kind": "persistent",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2451,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 0,
+    "flagged_at_end": 2451,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": null,
+    "recovery_latency_ticks_max": null,
+    "mean_degraded_ticks_flagged": 293.5565075479396,
+    "mean_escalations_flagged": 0.0,
+    "mean_total_test_cycles": 818903.0727634195,
+    "mean_interruption_cycles": 486764.26640159043,
+    "mean_interruption_cycles_flagged": 499225.3423092615,
+    "mean_escalation_interruption_cycles_flagged": 0.0,
+    "episodes_ending_in_DEGRADED": 2448,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 121,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 572,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 572
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 253
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 209,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 1296
+     }
+    }
+   },
+   "transient": {
+    "kind": "transient",
+    "episodes": 2515,
+    "detected": 2440,
+    "flagged": 2440,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 0,
+    "flagged_at_end": 2440,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": null,
+    "recovery_latency_ticks_max": null,
+    "mean_degraded_ticks_flagged": 293.3983606557377,
+    "mean_escalations_flagged": 0.0,
+    "mean_total_test_cycles": 818921.3984095427,
+    "mean_interruption_cycles": 486365.6393638171,
+    "mean_interruption_cycles_flagged": 501022.04221311474,
+    "mean_escalation_interruption_cycles_flagged": 0.0,
+    "episodes_ending_in_DEGRADED": 2437,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 120,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 120
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 563,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 563
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 253
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 208,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 208
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 1296
+     }
+    }
+   }
+  },
+  "s3_obs_esc": {
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 0,
+    "obs_en": 1,
+    "esc_en": 1,
+    "esc_gap": 10,
+    "stale_en": 0
+   },
+   "persistent": {
+    "kind": "persistent",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2451,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 0,
+    "flagged_at_end": 2451,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": null,
+    "recovery_latency_ticks_max": null,
+    "mean_degraded_ticks_flagged": 293.5565075479396,
+    "mean_escalations_flagged": 27.127702978376174,
+    "mean_total_test_cycles": 876631.3447316104,
+    "mean_interruption_cycles": 526202.3005964215,
+    "mean_interruption_cycles_flagged": 539693.1742146063,
+    "mean_escalation_interruption_cycles_flagged": 85025.60546715626,
+    "episodes_ending_in_DEGRADED": 2448,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 121,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 572,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 572
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 253
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 209,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 1296
+     }
+    }
+   },
+   "transient": {
+    "kind": "transient",
+    "episodes": 2515,
+    "detected": 2440,
+    "flagged": 2440,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 2267,
+    "flagged_at_end": 173,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": 8,
+    "recovery_latency_ticks_max": 13,
+    "mean_degraded_ticks_flagged": 48.74467213114754,
+    "mean_escalations_flagged": 5.04344262295082,
+    "mean_total_test_cycles": 343590.3073558648,
+    "mean_interruption_cycles": 89150.40357852883,
+    "mean_interruption_cycles_flagged": 91597.32172131147,
+    "mean_escalation_interruption_cycles_flagged": 14042.40368852459,
+    "episodes_ending_in_DEGRADED": 197,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 120,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 6
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 563,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 46
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 27
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 208,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 10
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 84
+     }
+    }
+   }
+  },
+  "s3_obs_esc_stale": {
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 0,
+    "obs_en": 1,
+    "esc_en": 1,
+    "esc_gap": 10,
+    "stale_en": 1
+   },
+   "persistent": {
+    "kind": "persistent",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2451,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 0,
+    "flagged_at_end": 2451,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": null,
+    "recovery_latency_ticks_max": null,
+    "mean_degraded_ticks_flagged": 293.5565075479396,
+    "mean_escalations_flagged": 27.127702978376174,
+    "mean_total_test_cycles": 876631.3447316104,
+    "mean_interruption_cycles": 526202.3005964215,
+    "mean_interruption_cycles_flagged": 539693.1742146063,
+    "mean_escalation_interruption_cycles_flagged": 85025.60546715626,
+    "episodes_ending_in_DEGRADED": 2448,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 121,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 572,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 572
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 253
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 209,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 1296
+     }
+    }
+   },
+   "transient": {
+    "kind": "transient",
+    "episodes": 2515,
+    "detected": 2440,
+    "flagged": 2440,
+    "cleared_while_fault_present": 0,
+    "recovered_after_fault_ended": 2267,
+    "flagged_at_end": 173,
+    "mean_flag_set_events": 1.0,
+    "max_flag_set_events": 1,
+    "recovery_latency_ticks_median": 8,
+    "recovery_latency_ticks_max": 13,
+    "mean_degraded_ticks_flagged": 48.74467213114754,
+    "mean_escalations_flagged": 5.04344262295082,
+    "mean_total_test_cycles": 343590.3073558648,
+    "mean_interruption_cycles": 89150.40357852883,
+    "mean_interruption_cycles_flagged": 91597.32172131147,
+    "mean_escalation_interruption_cycles_flagged": 14042.40368852459,
+    "episodes_ending_in_DEGRADED": 197,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "flagged": 120,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 6
+     },
+     "motor": {
+      "episodes": 577,
+      "flagged": 563,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 46
+     },
+     "encoder": {
+      "episodes": 256,
+      "flagged": 253,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 27
+     },
+     "comm": {
+      "episodes": 213,
+      "flagged": 208,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 10
+     },
+     "regfile": {
+      "episodes": 1344,
+      "flagged": 1296,
+      "cleared_while_fault_present": 0,
+      "flagged_at_end": 84
+     }
+    }
+   }
+  }
+ }
+}
