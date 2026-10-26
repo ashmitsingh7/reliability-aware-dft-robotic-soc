@@ -1,6 +1,8 @@
 # Public release
 
-Synchronized from validated development commit `e21fb09f244982a94bb3e85cee8d7c165d067bf1`.
+Built from development base commit `e21fb09f244982a94bb3e85cee8d7c165d067bf1` plus the
+validated working-tree implementation and experiment updates. The public release itself
+is identified by its Git commit and archive checksum.
 
 This release includes fairness-enabled RTL/Python scheduler plumbing, test-controller
 acceptance and completion reporting, an independent fairness oracle, preserved historical
