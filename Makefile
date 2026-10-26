@@ -9,7 +9,7 @@ REL     := rtl/reliability/state_monitor.sv rtl/reliability/aging_model.sv rtl/r
 ALL     := $(CORE) $(REL) rtl/dut/robotic_soc.sv
 TBS     := soc scan mbist adaptive baseline fault_injection full_system
 
-.PHONY: all test sim fault-campaign analyze plots synth clean prep test-step1 report-step1 test-step3 campaign-step3 check-paper-claims paper paper-pdf
+.PHONY: all test sim fault-campaign analyze plots synth clean prep test-step1 report-step1 test-step3 campaign-step3 campaign-step3-fairness test-step3-fairness campaign-final plots-final fairness-oracle verify-final check-paper-claims paper paper-pdf
 all: prep test fault-campaign analyze plots synth
 
 # NOTE on 'prep': it OVERWRITES the committed build/ and results/ inputs.  The paper's 2,515-fault database was built from the committed build/ netlists
@@ -35,7 +35,7 @@ test: sim        ## self-checking RTL testbenches + cross-checks
 	$(PY) python/check_netlist_equiv.py
 	$(PY) python/check_rtl_equiv.py
 	@for t in soc scan mbist adaptive baseline fault_injection full_system; do echo "== tb_$$t"; vvp build/tb_$$t.vvp | grep -E "PASS|FAIL|detected|injected|Phase|cycles" ; done | tee results/testbench_summary.txt
-	@! grep -q FAIL results/testbench_summary.txt && echo "ALL TESTBENCHES PASS"
+	@test $$(grep -cE "tb_(soc|scan|mbist|adaptive|baseline|fault_injection|full_system) PASS" results/testbench_summary.txt) -eq 7 && echo "ALL TESTBENCHES PASS"
 
 fault-campaign:  ## baseline-vs-adaptive campaign (+ literal-stepping verification of 200 faults) and weight sensitivity
 	$(PY) python/fault_campaign.py --verify 200
@@ -63,8 +63,22 @@ report-step1:    ## original-mission v1 vs refined analysis -> results_step1/
 # ---- Step-3 Phase-1 correctness fixes (obs_en / esc_en / stale_en, all OFF by default; does not alter any target above)
 campaign-step3:  ## closed-loop campaign (2,515 faults x persistent+transient) -> results_step3/   (development seeds only)
 	$(PY) python/step3_campaign.py
-test-step3:      ## directed tests + RTL/Python equivalence + mutation sensitivity + campaign checks -> results_step3/step3_phase1_tests.txt
-	$(PY) python/check_step3_phase1.py
+
+campaign-step3-fairness:  ## corrected Step-3 fairness campaign -> results_step3_fairness/; historical results_step3/ is preserved
+	$(PY) python/step3_campaign.py --out results_step3_fairness
+
+test-step3-fairness:  ## corrected Step-3 checks against results_step3_fairness/
+	STEP3_OUT=results_step3_fairness STEP3_CAMPAIGN=results_step3_fairness $(PY) python/check_step3_phase1.py
+test-step3:      ## corrected Step-3 checks -> results_step3_fairness/step3_phase1_tests.txt; legacy results_step3/ remains immutable
+	STEP3_OUT=results_step3_fairness STEP3_CAMPAIGN=results_step3_fairness $(PY) python/check_step3_phase1.py
+
+campaign-final:  ## fresh campaign in results_final/; never overwrites historical results
+	$(PY) python/step3_campaign.py --out results_final
+plots-final:     ## figures generated from results_final/ machine-readable data
+	$(PY) python/plot_final_results.py
+fairness-oracle: ## independent fairness specification checker
+	$(PY) python/check_fairness_oracle.py
+verify-final: fairness-oracle test-step3-fairness check-paper-claims
 
 # ---- Paper Section X ("Implementation of the Reliability-Aware DFT Architecture"): every number/configuration claim is asserted against the committed artifacts
 check-paper-claims:  ## python-only, seconds -> results_paper/paper_claims_check.txt (claim IDs P01.. map to docs/PAPER_TRACEABILITY.md)

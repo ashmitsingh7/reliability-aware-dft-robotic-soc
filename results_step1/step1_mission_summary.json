@@ -1,0 +1,427 @@
+{
+ "v1_default": {
+  "mode_ticks": {
+   "IDLE": 136,
+   "ACTIVE": 313,
+   "DEGRADED": 151
+  },
+  "first_degraded_tick": 449,
+  "degraded_ticks_449_599": 151,
+  "full_scans": {
+   "safety": 20,
+   "motor": 20,
+   "encoder": 20,
+   "comm": 20,
+   "regfile": 18
+  },
+  "partial_scans": {
+   "safety": 0,
+   "motor": 146,
+   "encoder": 5,
+   "comm": 0,
+   "regfile": 0
+  },
+  "last_full_scan_tick": {
+   "safety": 441,
+   "motor": 439,
+   "encoder": 440,
+   "comm": 442,
+   "regfile": 443
+  },
+  "full_scans_in_449_599": {
+   "safety": 0,
+   "motor": 0,
+   "encoder": 0,
+   "comm": 0,
+   "regfile": 0
+  },
+  "fairness_slots": 0,
+  "sweep_completions": 18,
+  "recoveries": 0,
+  "mission_interruption_cycles": 67690,
+  "total_test_cycles": 283671,
+  "full_scans_on_mission_active_ticks": 3,
+  "starvation_end_of_mission": [
+   {
+    "block": "safety",
+    "last_full_tick": 441,
+    "ticks_since_full": 158,
+    "eligible_windows_since": 42,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "motor",
+    "last_full_tick": 439,
+    "ticks_since_full": 160,
+    "eligible_windows_since": 44,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "encoder",
+    "last_full_tick": 440,
+    "ticks_since_full": 159,
+    "eligible_windows_since": 43,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "comm",
+    "last_full_tick": 442,
+    "ticks_since_full": 157,
+    "eligible_windows_since": 41,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "regfile",
+    "last_full_tick": 443,
+    "ticks_since_full": 156,
+    "eligible_windows_since": 40,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   }
+  ]
+ },
+ "persist_only": {
+  "mode_ticks": {
+   "IDLE": 136,
+   "ACTIVE": 313,
+   "DEGRADED": 151
+  },
+  "first_degraded_tick": 449,
+  "degraded_ticks_449_599": 151,
+  "full_scans": {
+   "safety": 18,
+   "motor": 18,
+   "encoder": 18,
+   "comm": 18,
+   "regfile": 18
+  },
+  "partial_scans": {
+   "safety": 0,
+   "motor": 146,
+   "encoder": 5,
+   "comm": 0,
+   "regfile": 0
+  },
+  "last_full_scan_tick": {
+   "safety": 441,
+   "motor": 439,
+   "encoder": 440,
+   "comm": 442,
+   "regfile": 443
+  },
+  "full_scans_in_449_599": {
+   "safety": 0,
+   "motor": 0,
+   "encoder": 0,
+   "comm": 0,
+   "regfile": 0
+  },
+  "fairness_slots": 0,
+  "sweep_completions": 18,
+  "recoveries": 0,
+  "mission_interruption_cycles": 67273,
+  "total_test_cycles": 279753,
+  "full_scans_on_mission_active_ticks": 2,
+  "starvation_end_of_mission": [
+   {
+    "block": "safety",
+    "last_full_tick": 441,
+    "ticks_since_full": 158,
+    "eligible_windows_since": 42,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "motor",
+    "last_full_tick": 439,
+    "ticks_since_full": 160,
+    "eligible_windows_since": 44,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "encoder",
+    "last_full_tick": 440,
+    "ticks_since_full": 159,
+    "eligible_windows_since": 43,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "comm",
+    "last_full_tick": 442,
+    "ticks_since_full": 157,
+    "eligible_windows_since": 41,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "regfile",
+    "last_full_tick": 443,
+    "ticks_since_full": 156,
+    "eligible_windows_since": 40,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   }
+  ]
+ },
+ "recovery_only": {
+  "mode_ticks": {
+   "IDLE": 174,
+   "ACTIVE": 414,
+   "DEGRADED": 12
+  },
+  "first_degraded_tick": 449,
+  "degraded_ticks_449_599": 12,
+  "full_scans": {
+   "safety": 25,
+   "motor": 26,
+   "encoder": 25,
+   "comm": 25,
+   "regfile": 23
+  },
+  "partial_scans": {
+   "safety": 0,
+   "motor": 6,
+   "encoder": 3,
+   "comm": 0,
+   "regfile": 0
+  },
+  "last_full_scan_tick": {
+   "safety": 579,
+   "motor": 577,
+   "encoder": 578,
+   "comm": 580,
+   "regfile": 581
+  },
+  "full_scans_in_449_599": {
+   "safety": 5,
+   "motor": 6,
+   "encoder": 5,
+   "comm": 5,
+   "regfile": 5
+  },
+  "fairness_slots": 0,
+  "sweep_completions": 23,
+  "recoveries": 3,
+  "mission_interruption_cycles": 13852,
+  "total_test_cycles": 268155,
+  "full_scans_on_mission_active_ticks": 4,
+  "starvation_end_of_mission": [
+   {
+    "block": "safety",
+    "last_full_tick": 579,
+    "ticks_since_full": 20,
+    "eligible_windows_since": 9,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "motor",
+    "last_full_tick": 577,
+    "ticks_since_full": 22,
+    "eligible_windows_since": 11,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "encoder",
+    "last_full_tick": 578,
+    "ticks_since_full": 21,
+    "eligible_windows_since": 10,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "comm",
+    "last_full_tick": 580,
+    "ticks_since_full": 19,
+    "eligible_windows_since": 8,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "regfile",
+    "last_full_tick": 581,
+    "ticks_since_full": 18,
+    "eligible_windows_since": 7,
+    "overdue": 0,
+    "classification": "OK"
+   }
+  ]
+ },
+ "starvation_only": {
+  "mode_ticks": {
+   "IDLE": 136,
+   "ACTIVE": 313,
+   "DEGRADED": 151
+  },
+  "first_degraded_tick": 449,
+  "degraded_ticks_449_599": 151,
+  "full_scans": {
+   "safety": 20,
+   "motor": 20,
+   "encoder": 20,
+   "comm": 20,
+   "regfile": 18
+  },
+  "partial_scans": {
+   "safety": 0,
+   "motor": 146,
+   "encoder": 5,
+   "comm": 0,
+   "regfile": 0
+  },
+  "last_full_scan_tick": {
+   "safety": 441,
+   "motor": 439,
+   "encoder": 440,
+   "comm": 442,
+   "regfile": 443
+  },
+  "full_scans_in_449_599": {
+   "safety": 0,
+   "motor": 0,
+   "encoder": 0,
+   "comm": 0,
+   "regfile": 0
+  },
+  "fairness_slots": 0,
+  "sweep_completions": 18,
+  "recoveries": 0,
+  "mission_interruption_cycles": 67690,
+  "total_test_cycles": 283671,
+  "full_scans_on_mission_active_ticks": 3,
+  "starvation_end_of_mission": [
+   {
+    "block": "safety",
+    "last_full_tick": 441,
+    "ticks_since_full": 158,
+    "eligible_windows_since": 42,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "motor",
+    "last_full_tick": 439,
+    "ticks_since_full": 160,
+    "eligible_windows_since": 44,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "encoder",
+    "last_full_tick": 440,
+    "ticks_since_full": 159,
+    "eligible_windows_since": 43,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "comm",
+    "last_full_tick": 442,
+    "ticks_since_full": 157,
+    "eligible_windows_since": 41,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   },
+   {
+    "block": "regfile",
+    "last_full_tick": 443,
+    "ticks_since_full": 156,
+    "eligible_windows_since": 40,
+    "overdue": 1,
+    "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED"
+   }
+  ]
+ },
+ "refined_all": {
+  "mode_ticks": {
+   "IDLE": 174,
+   "ACTIVE": 414,
+   "DEGRADED": 12
+  },
+  "first_degraded_tick": 449,
+  "degraded_ticks_449_599": 12,
+  "full_scans": {
+   "safety": 22,
+   "motor": 22,
+   "encoder": 22,
+   "comm": 22,
+   "regfile": 22
+  },
+  "partial_scans": {
+   "safety": 0,
+   "motor": 6,
+   "encoder": 3,
+   "comm": 0,
+   "regfile": 0
+  },
+  "last_full_scan_tick": {
+   "safety": 579,
+   "motor": 577,
+   "encoder": 578,
+   "comm": 580,
+   "regfile": 581
+  },
+  "full_scans_in_449_599": {
+   "safety": 4,
+   "motor": 4,
+   "encoder": 4,
+   "comm": 4,
+   "regfile": 4
+  },
+  "fairness_slots": 0,
+  "sweep_completions": 22,
+  "recoveries": 3,
+  "mission_interruption_cycles": 13435,
+  "total_test_cycles": 253151,
+  "full_scans_on_mission_active_ticks": 3,
+  "starvation_end_of_mission": [
+   {
+    "block": "safety",
+    "last_full_tick": 579,
+    "ticks_since_full": 20,
+    "eligible_windows_since": 9,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "motor",
+    "last_full_tick": 577,
+    "ticks_since_full": 22,
+    "eligible_windows_since": 11,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "encoder",
+    "last_full_tick": 578,
+    "ticks_since_full": 21,
+    "eligible_windows_since": 10,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "comm",
+    "last_full_tick": 580,
+    "ticks_since_full": 19,
+    "eligible_windows_since": 8,
+    "overdue": 0,
+    "classification": "OK"
+   },
+   {
+    "block": "regfile",
+    "last_full_tick": 581,
+    "ticks_since_full": 18,
+    "eligible_windows_since": 7,
+    "overdue": 0,
+    "classification": "OK"
+   }
+  ]
+ }
+}

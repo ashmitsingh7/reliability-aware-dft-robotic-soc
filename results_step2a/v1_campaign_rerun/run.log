@@ -1,0 +1,3 @@
+verify: 200 faults x 2 modes re-run by literal manager stepping, mismatches = 0
+campaign complete: 2515 faults; adaptive cov 0.8231, baseline(N=20) cov 0.9992
+DONE

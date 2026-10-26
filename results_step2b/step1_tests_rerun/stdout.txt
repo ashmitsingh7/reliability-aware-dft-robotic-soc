@@ -1,0 +1,34 @@
+PASS  T01 v1 configuration: every Step-1 switch defaults OFF and decisions equal the shipped scheduler_results.csv
+PASS  T02 aging threshold crossed: DEGRADED flag set at the predicted tick (not before), DEGRADED state one tick later; same entry rule as v1
+PASS  T03 aging remains high: aging trace is identical to v1 (monotone, never reset) in refined runs incl. recovery
+PASS  T04 unresolved safety fault: flag + unresolved bit persist while diagnostics fail (even beyond fault-history decay timers); no recovery without evidence
+PASS  T05 successful recovery diagnostic: recovery exactly when recov_n consecutive passing DIAGs follow the last failure; aging not reset; ack recorded
+PASS  T06 re-entry: aging-based re-entry at max(deg_th, ack+margin); failure-based re-entry immediate
+PASS  T07 repeated IDLE/ACTIVE transitions: sweep progress persists across ACTIVE, unfinished work resumes, no duplicate accounting
+PASS  T08 partial scans never satisfy full-scan bookkeeping (no sweep bit, no last-full update, no overdue relief)
+PASS  T09 repeated DEGRADED ticks with unresolved safety fault: diagnostic stays prioritized; fairness never preempts; withholding is reported
+PASS  T10 long mission with eligible windows: unaffected blocks keep receiving full scans in DEGRADED; waiting bound holds
+PASS  T11 mission without eligible test windows: starvation reported explicitly; no full scan is forced into ACTIVE
+PASS  T12 safety/architecture invariants over all scenarios: ACTIVE state runs ONLINE only; fairness only on mission-idle ticks; one decision per tick
+  PASS  RTL==Python  orig_v1cfg                         ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_v1cfg_fe14                    ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_baseline                      ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_refined                       ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_refined_fe14                  ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_refined_baseline_mode         ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_refined_reset300              ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_recov_only_fe14               ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_persist_only                  ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_starve_only                   ticks= 600 mismatches=0 
+  PASS  RTL==Python  recovery_closed_loop               ticks= 500 mismatches=0 
+  PASS  RTL==Python  recovery_reentry_aging             ticks= 600 mismatches=0 
+  PASS  RTL==Python  persistent_fault_refined           ticks= 400 mismatches=0 
+  PASS  RTL==Python  short_idle_persist                 ticks= 240 mismatches=0 
+  PASS  RTL==Python  fairness_long                      ticks= 900 mismatches=0 
+  PASS  RTL==Python  no_windows                         ticks= 400 mismatches=0 
+  PASS  RTL==Python  threshold_edge                     ticks= 300 mismatches=0 
+  PASS  RTL==Python  orig_refined_n1_m0_gap0            ticks= 600 mismatches=0 
+  PASS  RTL==Python  orig_refined_n5_m40_gap9           ticks= 600 mismatches=0 
+PASS  T13 RTL vs Python full decision + internal-state traces (10540 ticks, 52 columns/tick)
+
+STEP-1 DIRECTED TESTS: 13/13 passed

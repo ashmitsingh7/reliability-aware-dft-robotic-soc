@@ -1,0 +1,17 @@
+module,total_cells,flip_flops,combinational_cells
+safety_with_scan,145,9,136
+safety_functional_only(scan tied off),77,9,68
+motor_with_scan,508,24,484
+motor_functional_only(scan tied off),369,24,345
+encoder_with_scan,355,31,324
+encoder_functional_only(scan tied off),156,31,125
+comm_with_scan,316,27,289
+comm_functional_only(scan tied off),133,27,106
+regfile_with_scan,1862,128,1734
+regfile_functional_only(scan tied off),970,128,842
+robotic_soc_core(5 blocks+wrappers+scan chains+FI hooks),4475,219,4256
+mbist_controller,159,15,144
+online_test(checker only; shadow copy NOT included),430,38,392
+test_controller,595,79,516
+reliability_manager(state mon+aging+health+priority+scheduler),12991,276,12715
+scan_test_bank(pattern ROMs synthesised as logic),4947,425,4522

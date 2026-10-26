@@ -1,0 +1,11 @@
+fault_class,injected,detected
+SAF0,128,128
+SAF1,128,128
+TF_up,128,128
+TF_down,128,128
+AF_alias,240,240
+CFin_inter_word,240,240
+CFid_up_to_1,240,240
+CFid_down_to_0,240,240
+CFin_intra_word,112,112
+RF_state_SA,256,256

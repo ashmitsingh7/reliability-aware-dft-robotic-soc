@@ -1,0 +1,49 @@
+== tb_soc
+tb_soc PASS
+== tb_scan
+block 0 full scan: patterns=13 chain=9 cycles=139 (expected 139) fail=0 flush_ok=1
+block 0 partial scan: patterns=7 cycles=79 (expected 79) fail=0
+block 1 full scan: patterns=36 chain=24 cycles=924 (expected 924) fail=0 flush_ok=1
+block 1 partial scan: patterns=18 cycles=474 (expected 474) fail=0
+block 2 full scan: patterns=10 chain=31 cycles=351 (expected 351) fail=0 flush_ok=1
+block 2 partial scan: patterns=5 cycles=191 (expected 191) fail=0
+block 3 full scan: patterns=12 chain=27 cycles=363 (expected 363) fail=0 flush_ok=1
+block 3 partial scan: patterns=6 cycles=195 (expected 195) fail=0
+block 4 full scan: patterns=59 chain=128 cycles=7739 (expected 7739) fail=0 flush_ok=1
+block 4 partial scan: patterns=30 cycles=3998 (expected 3998) fail=0
+injected block 0 region 0 bit 4 SA0 -> scan fail=1
+injected block 0 region 1 bit 1 SA1 -> scan fail=1
+injected block 0 region 2 bit 1 SA0 -> scan fail=1
+injected block 1 region 0 bit 12 SA1 -> scan fail=1
+injected block 1 region 1 bit 1 SA0 -> scan fail=1
+injected block 1 region 2 bit 1 SA1 -> scan fail=1
+injected block 2 region 0 bit 15 SA0 -> scan fail=1
+injected block 2 region 1 bit 1 SA1 -> scan fail=1
+injected block 2 region 2 bit 1 SA0 -> scan fail=1
+injected block 3 region 0 bit 13 SA1 -> scan fail=1
+injected block 3 region 1 bit 1 SA0 -> scan fail=1
+injected block 3 region 2 bit 1 SA1 -> scan fail=1
+injected block 4 region 0 bit 64 SA0 -> scan fail=1
+injected block 4 region 1 bit 1 SA1 -> scan fail=1
+injected block 4 region 2 bit 1 SA0 -> scan fail=1
+tb_scan PASS
+== tb_mbist
+MBIST fault-free: cycles after start = 160 (10N = 160 operations), fail=0
+class        injected detected
+register_file RTL: 256 / 256 state-bit stuck-at faults detected by MBIST
+tb_mbist PASS
+== tb_adaptive
+tb_adaptive PASS (online decisions=7, first DEGRADED tick=26, degraded decisions=14)
+== tb_baseline
+tb_baseline PASS (5 periodic full-suite decisions, state-independent)
+== tb_fault_injection
+RTL fault injection: 710 faults, 525 detected by 600-cycle workload compare (73%)
+tb_fault_injection PASS
+== tb_full_system
+  Phase A (ACTIVE, fault-free): ticks in ACTIVE=7, online tests completed=4, failures=0
+  Phase A (IDLE, fault-free): ticks IDLE=13, full-scan decisions executed=11, blocks covered mask=11111, failures=0, longest test=8165 cycles
+  Phase B: injected encoder state[6] SA1 at tick 2
+  Phase B: first online fail tick=14, first DEGRADED tick=17, first partial-scan fail tick=18 (online fails=2, partial fails=9)
+  tb_full_system PASS
+
+(netlist<->RTL equivalence: PASS; RTL<->Python scheduler model: PASS, 600 ticks, adaptive+baseline; see build log)

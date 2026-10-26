@@ -1,0 +1,22 @@
+
+14. Printing statistics.
+
+=== nl_safety ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       78 wires
+       99 wire bits
+       22 public wires
+       43 public wire bits
+        4 ports
+       25 port bits
+       77 cells
+       15   $_AND_
+        9   $_DFF_P_
+       36   $_NAND_
+        3   $_NOR_
+        4   $_NOT_
+        8   $_OR_
+        2   $_XOR_
+

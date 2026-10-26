@@ -157,6 +157,20 @@ def _():
             if d["state"] == ST_ACTIVE and d["valid"]: A(d["tset"] == ONLINE, "ACTIVE ran a non-ONLINE test")
     A(any(d["reason"] == 6 for log in scen for d in log), "no escalation exercised")
 
+# ------------------------------------------------------------------ unresolved-evidence fairness exemption
+@T("F01 fairness exemption: a persistent unresolved fault never clears, while every healthy block remains within overdue_ticks + fair_gap; verified for obs_en and obs_en+esc_en")
+def _():
+    tr = make_trace(180, lambda t: 1, act=LOWACT)
+    for label, kw in (("obs", dict(obs_en=1, fair_unres_en=1)), ("obs_esc", dict(obs_en=1, fair_unres_en=1, esc_en=1))):
+        p = ev(overdue_ticks=40, fair_gap=4, **kw); log, _, _ = run_cl(p, tr, 1, FULLDET, 20)
+        tf = next(d["tick"] for d in log if d["degmask"] & (1 << 1))
+        A(all((d["degmask"] >> 1) & 1 and (d["unres"] >> 1) & 1 for d in log[tf:]), f"{label}: unresolved fault cleared")
+        for b in (0, 2, 3, 4):
+            scans = [d for d in log[tf:] if d["valid"] and d["blk"] == b and d["tset"] & FULL]
+            max_age = max(d["tick"] - d["lastfull"][b] for d in log[tf:])
+            A(scans, f"{label}: healthy block {b} received no full scan")
+            A(max_age <= p.overdue_ticks + p.fair_gap, f"{label}: block {b} max age {max_age} > {p.overdue_ticks + p.fair_gap}")
+
 # ------------------------------------------------------------------ stale bit
 def long_all_active(n): return make_trace(n, lambda t: 1, act=LOWACT)
 
@@ -176,7 +190,7 @@ def _():
     o = mission.generate(); a = python_trace(ev(), o, {}); b = python_trace(ev(stale_en=1), o, {}); A(all(expected_row(i, x)[:-1] == expected_row(i, y)[:-1] for i, (x, y) in enumerate(zip(a, b))))
 
 # ------------------------------------------------------------------ campaign level
-R3 = ROOT + "/results_step3"; R2A = ROOT + "/results_step2a"
+R3 = os.environ.get("STEP3_CAMPAIGN", ROOT + "/results_step3"); R2A = ROOT + "/results_step2a"
 def campaign_checks():
     rows = fc.load_db(); idx = {r["fault_id"]: i for i, r in enumerate(rows)}
     summ = json.load(open(R3 + "/campaign_summary.json")); pf = summ["profiles"]
@@ -230,6 +244,10 @@ def scenarios():
     S.append(("rand_cls_baseline_mode", ev(**ESC), orig, fe, cl, 1, -1))
     S.append(("rand_cls_recov_only_obs", Params(recov_en=1, obs_en=1, esc_en=1), orig, fe, cl, 0, -1))      # obs path under the Step-1 (non-evid) health logic
     S.append(("rand_cls_obs_starve_overdue20", ev(overdue_ticks=20, fair_gap=2, **ESC), orig, fe, cl, 0, -1))
+    tr_fair = make_trace(180, lambda t: 1, act=LOWACT)
+    for tag, kw in (("obs", dict(obs_en=1, fair_unres_en=1)), ("obs_esc", dict(obs_en=1, fair_unres_en=1, esc_en=1))):
+        _, f_, c_ = run_cl(ev(overdue_ticks=40, fair_gap=4, **kw), tr_fair, 1, FULLDET, 20)
+        S.append((f"persistent_b1_fair_{tag}", ev(overdue_ticks=12, fair_gap=2, **kw), tr_fair, f_, c_, 0, -1))
     tr = make_trace(400, IDLE_ALL, act=LOWACT)
     S.append(("accumulate_full_then_partial", ev(**ESC), tr, {10: 1 << 3, 12: 1 << 3}, {10: pack_cls({3: CLS_FULL}), 12: pack_cls({3: CLS_PARTIAL})}, 0, -1))
     S.append(("accumulate_partial_then_full", ev(**ESC), tr, {10: 1 << 3, 12: 1 << 3}, {10: pack_cls({3: CLS_PARTIAL}), 12: pack_cls({3: CLS_FULL})}, 0, -1))

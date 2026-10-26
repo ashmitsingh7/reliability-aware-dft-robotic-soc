@@ -1,0 +1,35 @@
+make sim rc=0
+comm     cycles=600 mismatches=0
+regfile  cycles=600 mismatches=0
+NETLIST/RTL EQUIVALENCE: PASS
+mode 0: 600 ticks compared, mismatches = 0
+/home/claude/work/scratch_edit/tb/tb_scheduler.sv:40: $finish called at 12030000 (1ps)
+mode 1: 600 ticks compared, mismatches = 0
+RTL vs PYTHON MODEL: PASS
+== tb_soc
+tb_soc PASS
+elapsed 0s
+== tb_adaptive
+tb_adaptive PASS (online decisions=7, first DEGRADED tick=26, degraded decisions=14)
+elapsed 0s
+== tb_baseline
+tb_baseline PASS (5 periodic full-suite decisions, state-independent)
+elapsed 0s
+== tb_mbist
+tb_mbist PASS
+elapsed 16s
+== tb_scan
+tb_scan PASS
+elapsed 118s
+== tb_fault_injection
+tb_fault_injection PASS
+elapsed 119s
+== tb_full_system
+  [B] partial scan FAIL on block 2 at tick 22
+  [B] partial scan FAIL on block 2 at tick 23
+  [B] partial scan FAIL on block 2 at tick 24
+  [B] partial scan FAIL on block 2 at tick 25
+  [B] partial scan FAIL on block 2 at tick 26
+tb_full_system PASS
+elapsed 225s
+DONE

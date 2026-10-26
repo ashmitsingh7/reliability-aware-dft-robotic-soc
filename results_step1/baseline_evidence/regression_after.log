@@ -1,0 +1,34 @@
+== make sim
+make: Nothing to be done for 'sim'.
+== netlist equiv
+regfile  cycles=600 mismatches=0
+NETLIST/RTL EQUIVALENCE: PASS
+== rtl equiv (v1 default)
+/home/claude/work/reliability_aware_dft/tb/tb_scheduler.sv:40: $finish called at 12030000 (1ps)
+mode 1: 600 ticks compared, mismatches = 0
+RTL vs PYTHON MODEL: PASS
+== tb_soc
+tb_soc PASS
+== tb_scan
+injected block 4 region 0 bit 64 SA0 -> scan fail=1
+injected block 4 region 1 bit 1 SA1 -> scan fail=1
+injected block 4 region 2 bit 1 SA0 -> scan fail=1
+tb_scan PASS
+== tb_mbist
+MBIST fault-free: cycles after start = 160 (10N = 160 operations), fail=0
+class        injected detected
+register_file RTL: 256 / 256 state-bit stuck-at faults detected by MBIST
+tb_mbist PASS
+== tb_adaptive
+tb_adaptive PASS (online decisions=7, first DEGRADED tick=26, degraded decisions=14)
+== tb_baseline
+tb_baseline PASS (5 periodic full-suite decisions, state-independent)
+== tb_fault_injection
+RTL fault injection: 710 faults, 525 detected by 600-cycle workload compare (73%)
+tb_fault_injection PASS
+== tb_full_system
+  [B] partial scan FAIL on block 2 at tick 25
+  [B] partial scan FAIL on block 2 at tick 26
+Phase B: first online fail tick=14, first DEGRADED tick=17, first partial-scan fail tick=18 (online fails=2, partial fails=9)
+tb_full_system PASS
+== DONE

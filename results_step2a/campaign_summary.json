@@ -1,0 +1,2303 @@
+{
+ "meta": {
+  "faults": 2515,
+  "mission_ticks": 600,
+  "epoch_cycles": 20000,
+  "injection_seed": 4242,
+  "mission_seed": 2024,
+  "fault_db_sha256": "a744127a1c97bf7d12633f37c3bcf048233dd5096a013eec1fa302ffcf54b6d6",
+  "atpg_stats_sha256": "99148d7e26cc6a55eae739c6725e598b147f7c217ab48a572f7c8b65342e9a34",
+  "mission_trace_sha256": "8b87351c0002db53ee5097400c1358fd6508a34110588c530221dbae4a95a181",
+  "git_commit": "5ce425badd1f440f093086b80ead05d225fcbec0",
+  "argv": [
+   "--out",
+   "../results_step2a",
+   "--verify",
+   "200",
+   "--closed-loop"
+  ]
+ },
+ "profiles": {
+  "v1_adaptive": {
+   "faults": 2515,
+   "detected": 2070,
+   "fault_coverage": 0.8230616302186878,
+   "mean_detection_latency_cycles": 319349.0570048309,
+   "median_detection_latency_cycles": 236983,
+   "p95_detection_latency_cycles": 864669,
+   "censored_mean_latency_cycles": 554997.2457256461,
+   "total_test_cycles": 283671,
+   "mission_interruption_cycles": 67690,
+   "test_overhead_pct": 2.363925,
+   "interruption_overhead_pct": 0.5640833333333334,
+   "full_scans": 98,
+   "partial_scans": 151,
+   "mbist_runs": 18,
+   "online_tests": 158,
+   "coverage_per_mcycle": 2.901465536550045,
+   "detected_in_IDLE": 1443,
+   "detected_in_ACTIVE": 447,
+   "detected_in_DEGRADED": 180,
+   "coverage_crit4": 0.768,
+   "coverage_crit3": 0.978391356542617,
+   "coverage_crit2": 0.7417840375586855,
+   "coverage_crit1": 0.7447916666666666,
+   "tests_safety": 103,
+   "tests_motor": 223,
+   "tests_encoder": 40,
+   "tests_comm": 23,
+   "tests_regfile": 18,
+   "profile": "v1_adaptive",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 96,
+     "coverage": 0.768
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 569,
+     "coverage": 0.9861351819757366
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 246,
+     "coverage": 0.9609375
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 158,
+     "coverage": 0.7417840375586855
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1001,
+     "coverage": 0.7447916666666666
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 20,
+     "last_full_tick": 441,
+     "ticks_since_last_full": 158,
+     "max_gap_between_full_scans": 59,
+     "overdue_at_end": 1
+    },
+    "motor": {
+     "full_scans": 20,
+     "last_full_tick": 439,
+     "ticks_since_last_full": 160,
+     "max_gap_between_full_scans": 57,
+     "overdue_at_end": 1
+    },
+    "encoder": {
+     "full_scans": 20,
+     "last_full_tick": 440,
+     "ticks_since_last_full": 159,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 1
+    },
+    "comm": {
+     "full_scans": 20,
+     "last_full_tick": 442,
+     "ticks_since_last_full": 157,
+     "max_gap_between_full_scans": 57,
+     "overdue_at_end": 1
+    },
+    "regfile": {
+     "full_scans": 18,
+     "last_full_tick": 443,
+     "ticks_since_last_full": 156,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 1
+    }
+   },
+   "overdue_blocks_at_end": [
+    "safety",
+    "motor",
+    "encoder",
+    "comm",
+    "regfile"
+   ],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": [
+    {
+     "block": "safety",
+     "last_full_tick": 441,
+     "ticks_since_full": 158,
+     "eligible_windows_since": 42,
+     "overdue": 1,
+     "classification": "OVERDUE_SERVED_ELSEWHERE_OR_PENDING",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 2,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "motor",
+     "last_full_tick": 439,
+     "ticks_since_full": 160,
+     "eligible_windows_since": 44,
+     "overdue": 1,
+     "classification": "OVERDUE_SERVED_ELSEWHERE_OR_PENDING",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 4,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "encoder",
+     "last_full_tick": 440,
+     "ticks_since_full": 159,
+     "eligible_windows_since": 43,
+     "overdue": 1,
+     "classification": "OVERDUE_SERVED_ELSEWHERE_OR_PENDING",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 3,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "comm",
+     "last_full_tick": 442,
+     "ticks_since_full": 157,
+     "eligible_windows_since": 41,
+     "overdue": 1,
+     "classification": "OVERDUE_SERVED_ELSEWHERE_OR_PENDING",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 1,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "regfile",
+     "last_full_tick": 443,
+     "ticks_since_full": 156,
+     "eligible_windows_since": 40,
+     "overdue": 1,
+     "classification": "OVERDUE_ELIGIBLE_WINDOWS_AVAILABLE_BUT_UNUSED",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 0,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    }
+   ],
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2070,
+    "flagged": 2076,
+    "cleared_while_fault_persists": 94,
+    "false_clearance_rate_of_flagged": 0.04527938342967245,
+    "mean_degraded_ticks_detected": 336.1497584541063,
+    "mean_diag_decisions_after_detection": 319.3584541062802,
+    "mean_other_block_full_scans_after_flag": 0.24396135265700483,
+    "mean_total_test_cycles": 761890.7359840954,
+    "mean_interruption_cycles": 447269.8616302187,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 8,
+      "flagged": 94
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 25,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 11,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 9,
+      "flagged": 158
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 41,
+      "flagged": 991
+     }
+    }
+   }
+  },
+  "fixed_N5": {
+   "faults": 2515,
+   "detected": 2513,
+   "fault_coverage": 0.9992047713717693,
+   "mean_detection_latency_cycles": 55170.94707520891,
+   "median_detection_latency_cycles": 54453,
+   "p95_detection_latency_cycles": 100350,
+   "censored_mean_latency_cycles": 59091.63538767396,
+   "total_test_cycles": 1161120,
+   "mission_interruption_cycles": 832136,
+   "test_overhead_pct": 9.676,
+   "interruption_overhead_pct": 6.934466666666666,
+   "full_scans": 600,
+   "partial_scans": 0,
+   "mbist_runs": 120,
+   "online_tests": 0,
+   "coverage_per_mcycle": 0.8605525452767754,
+   "detected_in_IDLE": 559,
+   "detected_in_ACTIVE": 1335,
+   "detected_in_DEGRADED": 619,
+   "coverage_crit4": 1.0,
+   "coverage_crit3": 0.9975990396158463,
+   "coverage_crit2": 1.0,
+   "coverage_crit1": 1.0,
+   "tests_safety": 120,
+   "tests_motor": 120,
+   "tests_encoder": 120,
+   "tests_comm": 120,
+   "tests_regfile": 120,
+   "profile": "fixed_N5",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 5,
+    "mode": 1,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 125,
+     "coverage": 1.0
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 575,
+     "coverage": 0.9965337954939342
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 256,
+     "coverage": 1.0
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 213,
+     "coverage": 1.0
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1344,
+     "coverage": 1.0
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 120,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 5,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 120,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 5,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 120,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 5,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 120,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 5,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 120,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 5,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": "n/a: fixed-period baseline does not keep scheduler lastfull; see full_scans_by_block (derived from decisions)",
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2513,
+    "flagged": 833,
+    "cleared_while_fault_persists": 0,
+    "false_clearance_rate_of_flagged": 0.0,
+    "mean_degraded_ticks_detected": 151.0,
+    "mean_diag_decisions_after_detection": 0.0,
+    "mean_other_block_full_scans_after_flag": 0.0,
+    "mean_total_test_cycles": 1161120.0,
+    "mean_interruption_cycles": 832136.0,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 0,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 0,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     }
+    }
+   }
+  },
+  "fixed_N10": {
+   "faults": 2515,
+   "detected": 2513,
+   "fault_coverage": 0.9992047713717693,
+   "mean_detection_latency_cycles": 105429.60206923995,
+   "median_detection_latency_cycles": 105938,
+   "p95_detection_latency_cycles": 194809,
+   "censored_mean_latency_cycles": 109310.32326043738,
+   "total_test_cycles": 580560,
+   "mission_interruption_cycles": 425744,
+   "test_overhead_pct": 4.838,
+   "interruption_overhead_pct": 3.5478666666666667,
+   "full_scans": 300,
+   "partial_scans": 0,
+   "mbist_runs": 60,
+   "online_tests": 0,
+   "coverage_per_mcycle": 1.7211050905535508,
+   "detected_in_IDLE": 525,
+   "detected_in_ACTIVE": 1346,
+   "detected_in_DEGRADED": 642,
+   "coverage_crit4": 1.0,
+   "coverage_crit3": 0.9975990396158463,
+   "coverage_crit2": 1.0,
+   "coverage_crit1": 1.0,
+   "tests_safety": 60,
+   "tests_motor": 60,
+   "tests_encoder": 60,
+   "tests_comm": 60,
+   "tests_regfile": 60,
+   "profile": "fixed_N10",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 10,
+    "mode": 1,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 125,
+     "coverage": 1.0
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 575,
+     "coverage": 0.9965337954939342
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 256,
+     "coverage": 1.0
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 213,
+     "coverage": 1.0
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1344,
+     "coverage": 1.0
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 60,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 10,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 60,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 10,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 60,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 10,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 60,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 10,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 60,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 10,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": "n/a: fixed-period baseline does not keep scheduler lastfull; see full_scans_by_block (derived from decisions)",
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2513,
+    "flagged": 833,
+    "cleared_while_fault_persists": 0,
+    "false_clearance_rate_of_flagged": 0.0,
+    "mean_degraded_ticks_detected": 151.0,
+    "mean_diag_decisions_after_detection": 0.0,
+    "mean_other_block_full_scans_after_flag": 0.0,
+    "mean_total_test_cycles": 580560.0,
+    "mean_interruption_cycles": 425744.0,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 0,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 0,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     }
+    }
+   }
+  },
+  "fixed_N20": {
+   "faults": 2515,
+   "detected": 2513,
+   "fault_coverage": 0.9992047713717693,
+   "mean_detection_latency_cycles": 206504.0151213689,
+   "median_detection_latency_cycles": 207876,
+   "p95_detection_latency_cycles": 382402,
+   "censored_mean_latency_cycles": 210304.35904572564,
+   "total_test_cycles": 290280,
+   "mission_interruption_cycles": 222548,
+   "test_overhead_pct": 2.419,
+   "interruption_overhead_pct": 1.8545666666666667,
+   "full_scans": 150,
+   "partial_scans": 0,
+   "mbist_runs": 30,
+   "online_tests": 0,
+   "coverage_per_mcycle": 3.4422101811071015,
+   "detected_in_IDLE": 409,
+   "detected_in_ACTIVE": 1462,
+   "detected_in_DEGRADED": 642,
+   "coverage_crit4": 1.0,
+   "coverage_crit3": 0.9975990396158463,
+   "coverage_crit2": 1.0,
+   "coverage_crit1": 1.0,
+   "tests_safety": 30,
+   "tests_motor": 30,
+   "tests_encoder": 30,
+   "tests_comm": 30,
+   "tests_regfile": 30,
+   "profile": "fixed_N20",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 1,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 125,
+     "coverage": 1.0
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 575,
+     "coverage": 0.9965337954939342
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 256,
+     "coverage": 1.0
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 213,
+     "coverage": 1.0
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1344,
+     "coverage": 1.0
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 30,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 20,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 30,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 20,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 30,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 20,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 30,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 20,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 30,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 20,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": "n/a: fixed-period baseline does not keep scheduler lastfull; see full_scans_by_block (derived from decisions)",
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2513,
+    "flagged": 833,
+    "cleared_while_fault_persists": 0,
+    "false_clearance_rate_of_flagged": 0.0,
+    "mean_degraded_ticks_detected": 151.0,
+    "mean_diag_decisions_after_detection": 0.0,
+    "mean_other_block_full_scans_after_flag": 0.0,
+    "mean_total_test_cycles": 290280.0,
+    "mean_interruption_cycles": 222548.0,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 0,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 0,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     }
+    }
+   }
+  },
+  "fixed_N40": {
+   "faults": 2515,
+   "detected": 2513,
+   "fault_coverage": 0.9992047713717693,
+   "mean_detection_latency_cycles": 404832.7059291683,
+   "median_detection_latency_cycles": 401573,
+   "p95_detection_latency_cycles": 763373,
+   "censored_mean_latency_cycles": 408475.3332007952,
+   "total_test_cycles": 145140,
+   "mission_interruption_cycles": 125788,
+   "test_overhead_pct": 1.2095,
+   "interruption_overhead_pct": 1.0482333333333334,
+   "full_scans": 75,
+   "partial_scans": 0,
+   "mbist_runs": 15,
+   "online_tests": 0,
+   "coverage_per_mcycle": 6.884420362214203,
+   "detected_in_IDLE": 316,
+   "detected_in_ACTIVE": 1555,
+   "detected_in_DEGRADED": 642,
+   "coverage_crit4": 1.0,
+   "coverage_crit3": 0.9975990396158463,
+   "coverage_crit2": 1.0,
+   "coverage_crit1": 1.0,
+   "tests_safety": 15,
+   "tests_motor": 15,
+   "tests_encoder": 15,
+   "tests_comm": 15,
+   "tests_regfile": 15,
+   "profile": "fixed_N40",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 40,
+    "mode": 1,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 125,
+     "coverage": 1.0
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 575,
+     "coverage": 0.9965337954939342
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 256,
+     "coverage": 1.0
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 213,
+     "coverage": 1.0
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1344,
+     "coverage": 1.0
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 15,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 40,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 15,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 40,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 15,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 40,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 15,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 40,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 15,
+     "last_full_tick": 599,
+     "ticks_since_last_full": 0,
+     "max_gap_between_full_scans": 40,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": "n/a: fixed-period baseline does not keep scheduler lastfull; see full_scans_by_block (derived from decisions)",
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2513,
+    "flagged": 833,
+    "cleared_while_fault_persists": 0,
+    "false_clearance_rate_of_flagged": 0.0,
+    "mean_degraded_ticks_detected": 151.0,
+    "mean_diag_decisions_after_detection": 0.0,
+    "mean_other_block_full_scans_after_flag": 0.0,
+    "mean_total_test_cycles": 145140.0,
+    "mean_interruption_cycles": 125788.0,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 0,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 0,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     }
+    }
+   }
+  },
+  "fixed_N80": {
+   "faults": 2515,
+   "detected": 2368,
+   "fault_coverage": 0.9415506958250497,
+   "mean_detection_latency_cycles": 812890.5578547297,
+   "median_detection_latency_cycles": 822207,
+   "p95_detection_latency_cycles": 1514949,
+   "censored_mean_latency_cycles": 792873.8524850894,
+   "total_test_cycles": 67732,
+   "mission_interruption_cycles": 58056,
+   "test_overhead_pct": 0.5644333333333333,
+   "interruption_overhead_pct": 0.4838,
+   "full_scans": 35,
+   "partial_scans": 0,
+   "mbist_runs": 7,
+   "online_tests": 0,
+   "coverage_per_mcycle": 13.901120531285798,
+   "detected_in_IDLE": 324,
+   "detected_in_ACTIVE": 1381,
+   "detected_in_DEGRADED": 663,
+   "coverage_crit4": 0.944,
+   "coverage_crit3": 0.9519807923169268,
+   "coverage_crit2": 0.9624413145539906,
+   "coverage_crit1": 0.9315476190476191,
+   "tests_safety": 7,
+   "tests_motor": 7,
+   "tests_encoder": 7,
+   "tests_comm": 7,
+   "tests_regfile": 7,
+   "profile": "fixed_N80",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 80,
+    "mode": 1,
+    "recov_en": 0,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 118,
+     "coverage": 0.944
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 556,
+     "coverage": 0.9636048526863085
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 237,
+     "coverage": 0.92578125
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 205,
+     "coverage": 0.9624413145539906
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1252,
+     "coverage": 0.9315476190476191
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 136,
+    "ACTIVE": 313,
+    "DEGRADED": 151
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 7,
+     "last_full_tick": 559,
+     "ticks_since_last_full": 40,
+     "max_gap_between_full_scans": 80,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 7,
+     "last_full_tick": 559,
+     "ticks_since_last_full": 40,
+     "max_gap_between_full_scans": 80,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 7,
+     "last_full_tick": 559,
+     "ticks_since_last_full": 40,
+     "max_gap_between_full_scans": 80,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 7,
+     "last_full_tick": 559,
+     "ticks_since_last_full": 40,
+     "max_gap_between_full_scans": 80,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 7,
+     "last_full_tick": 559,
+     "ticks_since_last_full": 40,
+     "max_gap_between_full_scans": 80,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": "n/a: fixed-period baseline does not keep scheduler lastfull; see full_scans_by_block (derived from decisions)",
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2368,
+    "flagged": 833,
+    "cleared_while_fault_persists": 0,
+    "false_clearance_rate_of_flagged": 0.0,
+    "mean_degraded_ticks_detected": 151.0,
+    "mean_diag_decisions_after_detection": 0.0,
+    "mean_other_block_full_scans_after_flag": 0.0,
+    "mean_total_test_cycles": 67732.0,
+    "mean_interruption_cycles": 58056.0,
+    "episodes_with_overdue_blocks_at_end": 2515,
+    "episodes_ending_in_DEGRADED": 2515,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 0,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 0,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 0,
+      "flagged": 0
+     }
+    }
+   }
+  },
+  "s1_recovery_only": {
+   "faults": 2515,
+   "detected": 2451,
+   "fault_coverage": 0.9745526838966203,
+   "mean_detection_latency_cycles": 333457.949000408,
+   "median_detection_latency_cycles": 258072,
+   "p95_detection_latency_cycles": 863478,
+   "censored_mean_latency_cycles": 333817.78131212725,
+   "total_test_cycles": 268155,
+   "mission_interruption_cycles": 13852,
+   "test_overhead_pct": 2.234625,
+   "interruption_overhead_pct": 0.11543333333333333,
+   "full_scans": 124,
+   "partial_scans": 9,
+   "mbist_runs": 23,
+   "online_tests": 209,
+   "coverage_per_mcycle": 3.6342886908564838,
+   "detected_in_IDLE": 1856,
+   "detected_in_ACTIVE": 575,
+   "detected_in_DEGRADED": 20,
+   "coverage_crit4": 0.968,
+   "coverage_crit3": 0.9903961584633854,
+   "coverage_crit2": 0.9812206572769953,
+   "coverage_crit1": 0.9642857142857143,
+   "tests_safety": 112,
+   "tests_motor": 131,
+   "tests_encoder": 48,
+   "tests_comm": 28,
+   "tests_regfile": 23,
+   "profile": "s1_recovery_only",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 0,
+    "starve_en": 0,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 121,
+     "coverage": 0.968
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 572,
+     "coverage": 0.9913344887348353
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 253,
+     "coverage": 0.98828125
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 209,
+     "coverage": 0.9812206572769953
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1296,
+     "coverage": 0.9642857142857143
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 174,
+    "ACTIVE": 414,
+    "DEGRADED": 12
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 25,
+     "last_full_tick": 579,
+     "ticks_since_last_full": 20,
+     "max_gap_between_full_scans": 59,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 26,
+     "last_full_tick": 577,
+     "ticks_since_last_full": 22,
+     "max_gap_between_full_scans": 57,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 25,
+     "last_full_tick": 578,
+     "ticks_since_last_full": 21,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 25,
+     "last_full_tick": 580,
+     "ticks_since_last_full": 19,
+     "max_gap_between_full_scans": 57,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 23,
+     "last_full_tick": 581,
+     "ticks_since_last_full": 18,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": [
+    {
+     "block": "safety",
+     "last_full_tick": 579,
+     "ticks_since_full": 20,
+     "eligible_windows_since": 9,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 2,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "motor",
+     "last_full_tick": 577,
+     "ticks_since_full": 22,
+     "eligible_windows_since": 11,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 4,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "encoder",
+     "last_full_tick": 578,
+     "ticks_since_full": 21,
+     "eligible_windows_since": 10,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 3,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "comm",
+     "last_full_tick": 580,
+     "ticks_since_full": 19,
+     "eligible_windows_since": 8,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 1,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "regfile",
+     "last_full_tick": 581,
+     "ticks_since_full": 18,
+     "eligible_windows_since": 7,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 0,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    }
+   ],
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2459,
+    "cleared_while_fault_persists": 275,
+    "false_clearance_rate_of_flagged": 0.1118340788938593,
+    "mean_degraded_ticks_detected": 288.49041207670336,
+    "mean_diag_decisions_after_detection": 283.3108935128519,
+    "mean_other_block_full_scans_after_flag": 1.4239086087311301,
+    "mean_total_test_cycles": 796362.7522862823,
+    "mean_interruption_cycles": 463922.80994035787,
+    "episodes_with_overdue_blocks_at_end": 1959,
+    "episodes_ending_in_DEGRADED": 2374,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 8,
+      "flagged": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 146,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 53,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 12,
+      "flagged": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 56,
+      "flagged": 1296
+     }
+    }
+   }
+  },
+  "s1_all3": {
+   "faults": 2515,
+   "detected": 2451,
+   "fault_coverage": 0.9745526838966203,
+   "mean_detection_latency_cycles": 343845.5181558548,
+   "median_detection_latency_cycles": 267088,
+   "p95_detection_latency_cycles": 886900,
+   "censored_mean_latency_cycles": 343941.0147117296,
+   "total_test_cycles": 253151,
+   "mission_interruption_cycles": 13435,
+   "test_overhead_pct": 2.1095916666666668,
+   "interruption_overhead_pct": 0.11195833333333334,
+   "full_scans": 110,
+   "partial_scans": 9,
+   "mbist_runs": 22,
+   "online_tests": 209,
+   "coverage_per_mcycle": 3.849689252251108,
+   "detected_in_IDLE": 1776,
+   "detected_in_ACTIVE": 655,
+   "detected_in_DEGRADED": 20,
+   "coverage_crit4": 0.968,
+   "coverage_crit3": 0.9903961584633854,
+   "coverage_crit2": 0.9812206572769953,
+   "coverage_crit1": 0.9642857142857143,
+   "tests_safety": 105,
+   "tests_motor": 127,
+   "tests_encoder": 48,
+   "tests_comm": 26,
+   "tests_regfile": 22,
+   "profile": "s1_all3",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 0,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 121,
+     "coverage": 0.968
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 572,
+     "coverage": 0.9913344887348353
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 253,
+     "coverage": 0.98828125
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 209,
+     "coverage": 0.9812206572769953
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1296,
+     "coverage": 0.9642857142857143
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 174,
+    "ACTIVE": 414,
+    "DEGRADED": 12
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 22,
+     "last_full_tick": 579,
+     "ticks_since_last_full": 20,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 22,
+     "last_full_tick": 577,
+     "ticks_since_last_full": 22,
+     "max_gap_between_full_scans": 90,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 22,
+     "last_full_tick": 578,
+     "ticks_since_last_full": 21,
+     "max_gap_between_full_scans": 86,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 22,
+     "last_full_tick": 580,
+     "ticks_since_last_full": 19,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 22,
+     "last_full_tick": 581,
+     "ticks_since_last_full": 18,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": [
+    {
+     "block": "safety",
+     "last_full_tick": 579,
+     "ticks_since_full": 20,
+     "eligible_windows_since": 9,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 2,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "motor",
+     "last_full_tick": 577,
+     "ticks_since_full": 22,
+     "eligible_windows_since": 11,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 4,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "encoder",
+     "last_full_tick": 578,
+     "ticks_since_full": 21,
+     "eligible_windows_since": 10,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 3,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "comm",
+     "last_full_tick": 580,
+     "ticks_since_full": 19,
+     "eligible_windows_since": 8,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 1,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "regfile",
+     "last_full_tick": 581,
+     "ticks_since_full": 18,
+     "eligible_windows_since": 7,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 0,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    }
+   ],
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2459,
+    "cleared_while_fault_persists": 275,
+    "false_clearance_rate_of_flagged": 0.1118340788938593,
+    "mean_degraded_ticks_detected": 286.500203998368,
+    "mean_diag_decisions_after_detection": 281.3447572419421,
+    "mean_other_block_full_scans_after_flag": 1.6935944512443901,
+    "mean_total_test_cycles": 788472.1001988072,
+    "mean_interruption_cycles": 460789.92763419484,
+    "episodes_with_overdue_blocks_at_end": 1895,
+    "episodes_ending_in_DEGRADED": 2372,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 8,
+      "flagged": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 146,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 53,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 12,
+      "flagged": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 56,
+      "flagged": 1296
+     }
+    }
+   }
+  },
+  "s2a_all3_evid": {
+   "faults": 2515,
+   "detected": 2451,
+   "fault_coverage": 0.9745526838966203,
+   "mean_detection_latency_cycles": 348666.9698082415,
+   "median_detection_latency_cycles": 268036,
+   "p95_detection_latency_cycles": 902502,
+   "censored_mean_latency_cycles": 348639.77335984097,
+   "total_test_cycles": 250156,
+   "mission_interruption_cycles": 9544,
+   "test_overhead_pct": 2.084633333333333,
+   "interruption_overhead_pct": 0.07953333333333333,
+   "full_scans": 110,
+   "partial_scans": 0,
+   "mbist_runs": 22,
+   "online_tests": 216,
+   "coverage_per_mcycle": 3.895779769010619,
+   "detected_in_IDLE": 1771,
+   "detected_in_ACTIVE": 680,
+   "detected_in_DEGRADED": 0,
+   "coverage_crit4": 0.968,
+   "coverage_crit3": 0.9903961584633854,
+   "coverage_crit2": 0.9812206572769953,
+   "coverage_crit1": 0.9642857142857143,
+   "tests_safety": 105,
+   "tests_motor": 127,
+   "tests_encoder": 45,
+   "tests_comm": 27,
+   "tests_regfile": 22,
+   "profile": "s2a_all3_evid",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 0
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 121,
+     "coverage": 0.968
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 572,
+     "coverage": 0.9913344887348353
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 253,
+     "coverage": 0.98828125
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 209,
+     "coverage": 0.9812206572769953
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1296,
+     "coverage": 0.9642857142857143
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 173,
+    "ACTIVE": 427,
+    "DEGRADED": 0
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 22,
+     "last_full_tick": 579,
+     "ticks_since_last_full": 20,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 22,
+     "last_full_tick": 577,
+     "ticks_since_last_full": 22,
+     "max_gap_between_full_scans": 90,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 22,
+     "last_full_tick": 578,
+     "ticks_since_last_full": 21,
+     "max_gap_between_full_scans": 86,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 22,
+     "last_full_tick": 580,
+     "ticks_since_last_full": 19,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 22,
+     "last_full_tick": 581,
+     "ticks_since_last_full": 18,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": [
+    {
+     "block": "safety",
+     "last_full_tick": 579,
+     "ticks_since_full": 20,
+     "eligible_windows_since": 9,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 2,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "motor",
+     "last_full_tick": 577,
+     "ticks_since_full": 22,
+     "eligible_windows_since": 11,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 4,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "encoder",
+     "last_full_tick": 578,
+     "ticks_since_full": 21,
+     "eligible_windows_since": 10,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 3,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "comm",
+     "last_full_tick": 580,
+     "ticks_since_full": 19,
+     "eligible_windows_since": 8,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 1,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "regfile",
+     "last_full_tick": 581,
+     "ticks_since_full": 18,
+     "eligible_windows_since": 7,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 0,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    }
+   ],
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2451,
+    "cleared_while_fault_persists": 117,
+    "false_clearance_rate_of_flagged": 0.04773561811505508,
+    "mean_degraded_ticks_detected": 284.14157486740106,
+    "mean_diag_decisions_after_detection": 284.2093023255814,
+    "mean_other_block_full_scans_after_flag": 1.361485108119135,
+    "mean_total_test_cycles": 798990.951888668,
+    "mean_interruption_cycles": 469679.63976143143,
+    "episodes_with_overdue_blocks_at_end": 1893,
+    "episodes_ending_in_DEGRADED": 2371,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 8,
+      "flagged": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 27,
+      "flagged": 572
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 14,
+      "flagged": 253
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 12,
+      "flagged": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 56,
+      "flagged": 1296
+     }
+    }
+   }
+  },
+  "s2a_all3_evid_aflag": {
+   "faults": 2515,
+   "detected": 2451,
+   "fault_coverage": 0.9745526838966203,
+   "mean_detection_latency_cycles": 343845.5181558548,
+   "median_detection_latency_cycles": 267088,
+   "p95_detection_latency_cycles": 886900,
+   "censored_mean_latency_cycles": 343941.0147117296,
+   "total_test_cycles": 253151,
+   "mission_interruption_cycles": 13435,
+   "test_overhead_pct": 2.1095916666666668,
+   "interruption_overhead_pct": 0.11195833333333334,
+   "full_scans": 110,
+   "partial_scans": 9,
+   "mbist_runs": 22,
+   "online_tests": 209,
+   "coverage_per_mcycle": 3.849689252251108,
+   "detected_in_IDLE": 1776,
+   "detected_in_ACTIVE": 655,
+   "detected_in_DEGRADED": 20,
+   "coverage_crit4": 0.968,
+   "coverage_crit3": 0.9903961584633854,
+   "coverage_crit2": 0.9812206572769953,
+   "coverage_crit1": 0.9642857142857143,
+   "tests_safety": 105,
+   "tests_motor": 127,
+   "tests_encoder": 48,
+   "tests_comm": 26,
+   "tests_regfile": 22,
+   "profile": "s2a_all3_evid_aflag",
+   "config": {
+    "w": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "crit_term": [
+     252,
+     189,
+     189,
+     126,
+     63
+    ],
+    "rate": 175,
+    "rshift": 16,
+    "fp": 32,
+    "fh_inc": 1,
+    "fh_decay": 64,
+    "stale_k": 4,
+    "deg_th": 64,
+    "deb": 2,
+    "active_period": 2,
+    "sweep_gap": 10,
+    "base_n": 20,
+    "mode": 0,
+    "recov_en": 1,
+    "recov_n": 3,
+    "reentry_margin": 16,
+    "sweep_persist": 1,
+    "starve_en": 1,
+    "overdue_ticks": 150,
+    "fair_gap": 4,
+    "evid_en": 1,
+    "arisk_deg": 1
+   },
+   "injection_seed": 4242,
+   "experiment": "1_first_detection_fault_free_schedule_replay",
+   "coverage_by_block": {
+    "safety": {
+     "faults": 125,
+     "detected": 121,
+     "coverage": 0.968
+    },
+    "motor": {
+     "faults": 577,
+     "detected": 572,
+     "coverage": 0.9913344887348353
+    },
+    "encoder": {
+     "faults": 256,
+     "detected": 253,
+     "coverage": 0.98828125
+    },
+    "comm": {
+     "faults": 213,
+     "detected": 209,
+     "coverage": 0.9812206572769953
+    },
+    "regfile": {
+     "faults": 1344,
+     "detected": 1296,
+     "coverage": 0.9642857142857143
+    }
+   },
+   "state_occupancy_ticks": {
+    "IDLE": 174,
+    "ACTIVE": 414,
+    "DEGRADED": 12
+   },
+   "full_scans_by_block": {
+    "safety": {
+     "full_scans": 22,
+     "last_full_tick": 579,
+     "ticks_since_last_full": 20,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "motor": {
+     "full_scans": 22,
+     "last_full_tick": 577,
+     "ticks_since_last_full": 22,
+     "max_gap_between_full_scans": 90,
+     "overdue_at_end": 0
+    },
+    "encoder": {
+     "full_scans": 22,
+     "last_full_tick": 578,
+     "ticks_since_last_full": 21,
+     "max_gap_between_full_scans": 86,
+     "overdue_at_end": 0
+    },
+    "comm": {
+     "full_scans": 22,
+     "last_full_tick": 580,
+     "ticks_since_last_full": 19,
+     "max_gap_between_full_scans": 89,
+     "overdue_at_end": 0
+    },
+    "regfile": {
+     "full_scans": 22,
+     "last_full_tick": 581,
+     "ticks_since_last_full": 18,
+     "max_gap_between_full_scans": 55,
+     "overdue_at_end": 0
+    }
+   },
+   "overdue_blocks_at_end": [],
+   "mean_censored_latency_definition": "(detection cycle, or end of mission = 12000000 cycles if undetected) - injection cycle, averaged over ALL faults",
+   "ever_detectable_faults": 2513,
+   "starvation_report_end_of_mission": [
+    {
+     "block": "safety",
+     "last_full_tick": 579,
+     "ticks_since_full": 20,
+     "eligible_windows_since": 9,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 2,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "motor",
+     "last_full_tick": 577,
+     "ticks_since_full": 22,
+     "eligible_windows_since": 11,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 4,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "encoder",
+     "last_full_tick": 578,
+     "ticks_since_full": 21,
+     "eligible_windows_since": 10,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 3,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "comm",
+     "last_full_tick": 580,
+     "ticks_since_full": 19,
+     "eligible_windows_since": 8,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 1,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    },
+    {
+     "block": "regfile",
+     "last_full_tick": 581,
+     "ticks_since_full": 18,
+     "eligible_windows_since": 7,
+     "overdue": 0,
+     "classification": "OK",
+     "unresolved_diagnostic_blocks_at_end": [],
+     "block_itself_unresolved": 0,
+     "window_ticks_withheld_by_diag": 0,
+     "window_ticks_fair_gap": 0,
+     "window_ticks_feature_off": 0,
+     "window_ticks_served_other_block": 0,
+     "withholding_blocks": [],
+     "evidence_source": "recorded(fcause)"
+    }
+   ],
+   "verify_full_sim_mismatches": 0,
+   "verify_sample": 200,
+   "closed_loop": {
+    "experiment": "2_closed_loop_sequential_single_persistent_fault_episodes",
+    "episodes": 2515,
+    "detected": 2451,
+    "flagged": 2459,
+    "cleared_while_fault_persists": 275,
+    "false_clearance_rate_of_flagged": 0.1118340788938593,
+    "mean_degraded_ticks_detected": 286.5695634434924,
+    "mean_diag_decisions_after_detection": 281.4026927784578,
+    "mean_other_block_full_scans_after_flag": 1.7205222358221135,
+    "mean_total_test_cycles": 788561.402385686,
+    "mean_interruption_cycles": 460820.993638171,
+    "episodes_with_overdue_blocks_at_end": 1895,
+    "episodes_ending_in_DEGRADED": 2369,
+    "per_block": {
+     "safety": {
+      "episodes": 125,
+      "cleared_while_fault_persists": 8,
+      "flagged": 121
+     },
+     "motor": {
+      "episodes": 577,
+      "cleared_while_fault_persists": 146,
+      "flagged": 577
+     },
+     "encoder": {
+      "episodes": 256,
+      "cleared_while_fault_persists": 53,
+      "flagged": 256
+     },
+     "comm": {
+      "episodes": 213,
+      "cleared_while_fault_persists": 12,
+      "flagged": 209
+     },
+     "regfile": {
+      "episodes": 1344,
+      "cleared_while_fault_persists": 56,
+      "flagged": 1296
+     }
+    }
+   }
+  }
+ }
+}

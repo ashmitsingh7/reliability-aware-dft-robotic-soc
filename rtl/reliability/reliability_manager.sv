@@ -1,6 +1,6 @@
 // Reliability Manager = State Monitor + Aging Model + Health Manager + Priority Engine + Test Scheduler.
 // One evaluation per `tick` (scheduler epoch).  Outputs are combinational for the current tick.
-module reliability_manager (
+module reliability_manager #(parameter FAIR_UNRES_EN = FAIR_UNRES_EN_P) (
   input  wire clk, rst_n, tick, mode,           // mode 0 = adaptive, 1 = fixed baseline
   input  wire mission_active,
   input  wire [39:0] act_in, urg_in,
@@ -37,7 +37,7 @@ module reliability_manager (
   priority_engine #(.CRIT(CRIT_TERMS)) u_pe (.health(health), .aging(aging), .faults(faults), .urg(urg_in), .w(weights), .prio(prio));
   test_scheduler #(.ACTIVE_PERIOD(ACTIVE_PERIOD_P), .SWEEP_GAP(SWEEP_GAP_P), .BASE_N(BASE_N_P),
       .SWEEP_PERSIST(SWEEP_PERSIST_P), .STARVE_EN(STARVE_EN_P), .OVERDUE_T(OVERDUE_T_P), .FAIR_GAP(FAIR_GAP_P),
-      .OBS_EN(OBS_EN_P), .ESC_EN(ESC_EN_P), .ESC_GAP(ESC_GAP_P), .STALE_EN(STALE_EN_P)) u_ts (
+      .OBS_EN(OBS_EN_P), .ESC_EN(ESC_EN_P), .ESC_GAP(ESC_GAP_P), .STALE_EN(STALE_EN_P), .FAIR_UNRES_EN(FAIR_UNRES_EN)) u_ts (
       .clk(clk), .rst_n(rst_n), .tick(tick), .mode(mode), .mission_active(mission_active), .state_n(state), .prio(prio), .degmask_n(degmask), .unres_n(dbg_unres), .nf_n(dbg_nf), .last_diag(last_diag), .last_tset(last_tset), .dbg_esc(dbg_esc), .dbg_lfstale(dbg_lfstale),
       .dbg_sweep(dbg_sweep), .dbg_gap(dbg_gap), .dbg_fair(dbg_fair), .dbg_lastfull(dbg_lastfull), .dbg_overdue(dbg_overdue), .dbg_fcause(dbg_fcause),
       .dec_valid(dec_valid), .dec_blk(dec_blk), .dec_tset(dec_tset), .dec_reason(dec_reason), .last_valid(last_valid), .last_blk(last_blk));

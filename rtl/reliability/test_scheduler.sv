@@ -4,7 +4,7 @@
 //         6 (Step-3, OBS_EN&ESC_EN) degraded flagged block escalated to a FULL diagnostic, rate-limited by ESC_GAP.
 module test_scheduler #(parameter ACTIVE_PERIOD = 2, SWEEP_GAP = 10, BASE_N = 20,
                         SWEEP_PERSIST = 0, STARVE_EN = 0, OVERDUE_T = 150, FAIR_GAP = 4,
-                        OBS_EN = 0, ESC_EN = 0, ESC_GAP = 10, STALE_EN = 0) (
+                        OBS_EN = 0, ESC_EN = 0, ESC_GAP = 10, STALE_EN = 0, FAIR_UNRES_EN = 0) (
   input  wire clk, rst_n, tick, mode, mission_active,
   input  wire [1:0]  state_n,
   input  wire [79:0] prio,
@@ -69,13 +69,15 @@ module test_scheduler #(parameter ACTIVE_PERIOD = 2, SWEEP_GAP = 10, BASE_N = 20
       else begin sweep_n = 0; gap_n = SWEEP_GAP; end
       ap_n = 0;
       cand = dbg_overdue & ~degmask_n;
-      if (mission_active) dbg_fcause = 3'd1;
+      if (mission_active && !(FAIR_UNRES_EN && ((degmask_n & unres_n) != 5'd0))) dbg_fcause = 3'd1;
       else if (!STARVE_EN) dbg_fcause = 3'd2;
-      else if (fair < FAIR_GAP) dbg_fcause = 3'd3;
+      else if (fair < FAIR_GAP && !(FAIR_UNRES_EN && ((degmask_n & unres_n) != 5'd0))) dbg_fcause = 3'd3;
       else if (cand == 5'd0) dbg_fcause = 3'd5;
-      else if ((degmask_n & unres_n) != 5'd0) dbg_fcause = 3'd4;
+      else if ((degmask_n & unres_n) != 5'd0 && !FAIR_UNRES_EN) dbg_fcause = 3'd4;
       else dbg_fcause = 3'd6;
-      if (STARVE_EN && !mission_active && fair >= FAIR_GAP && ((degmask_n & unres_n) == 5'd0) && cand != 5'd0) begin
+      // A flagged block's unresolved evidence must remain set until a dominating pass clears it.  FAIR_UNRES_EN
+      // only exempts distinct, unflagged overdue blocks from the old global fairness gate, including the mission-active gate while unresolved evidence exists.
+      if (STARVE_EN && (!mission_active || (FAIR_UNRES_EN && ((degmask_n & unres_n) != 5'd0))) && (fair >= FAIR_GAP || (FAIR_UNRES_EN && ((degmask_n & unres_n) != 5'd0))) && (FAIR_UNRES_EN || ((degmask_n & unres_n) == 5'd0)) && cand != 5'd0) begin
         dec_blk = argmax(prio, cand); dec_valid = 1; dec_reason = 3'd5; fair_n = 8'd0;
         dec_tset = 5'b10001 | ((dec_blk == 3'd4) ? 5'b00100 : 5'b00000);
         lastfull_n[16*dec_blk +: 16] = tcnt[15:0]; lf_upd[dec_blk] = 1'b1;

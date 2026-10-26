@@ -1,0 +1,41 @@
+PASS  E01 Step-2A switches default OFF; evid_en=0 reproduces the shipped Step-1 refined decision log tick-for-tick
+PASS  E02 aging-only risk (arisk_deg=0): arisk rises at the predicted tick, no DEGRADED, no diagnostic-fault evidence, aging unchanged/monotone, aging term in Eq.(2) priority
+PASS  E03 aging-risk escalation (arisk_deg=1): aflag enters DEGRADED without fault evidence, clears after recov_n passing DIAGs, re-enters at ack+margin; identical to Step-1 recovery on fault-free traces
+PASS  E04 diagnostic failure with negligible aging: dfault+unresolved set at the failure tick, DEGRADED next tick, PARTIAL+DIAG on the failed block; arisk stays 0 (independent of aging); same for arisk_deg 0/1
+PASS  E05 passing diagnostics: dfault cleared exactly after recov_n consecutive passing DIAGs; recovery does NOT clear aging risk and does not touch aging
+PASS  E06 unresolved fault: dfault/unres persist, okc stays 0, state stays DEGRADED beyond fault-history decay
+PASS  E07 re-entry: a second fault episode re-flags immediately at the failure; no aging-driven re-entry between episodes (arisk_deg=0)
+PASS  E08 a failure during recovery resets the passing-diagnostic count (recovery requires N *consecutive* passes)
+PASS  E09 starvation report: withholding is reported only when the log records an unresolved-diagnostic fairness denial (fcause 4); not from the global condition
+PASS  E10 starvation report: genuine withholding (window + gap elapsed + overdue unflagged candidate + unresolved diagnostic) is reported with the withholding block named; the unresolved block itself is classified separately
+PASS  E11 starvation report: feature disabled, aging-only DEGRADED never withholds, no-window starvation, and trace-only logs are labelled 'inferred'
+PASS  E12 bookkeeping: lastfull/sweep bits are set by the FULL+DIAG decision tick regardless of its pass/fail outcome (outcome is tracked by unres); partial scans never touch them
+PASS  E13 overdue boundary: after its last full scan a block becomes overdue at exactly lastfull+overdue_ticks (threshold-1 not, threshold yes) for several thresholds; lastfull==0 means 'tick 0 or never'
+PASS  E14 fixed-period baseline schedule is independent of adaptive/Step-1/Step-2A signals: identical decisions for every profile, with or without failure feedback
+PASS  E16 rollover semantics (Python): a block scanned every 100 ticks is never overdue (thr 150) across tick 65535->65536; the v1-style 32-bit-vs-16-bit comparison would flag false overdue
+      mutant: 70000 ticks, 4408 mismatches; first: tick 65592: overdue py=0 rtl=4
+PASS  E17 test sensitivity: re-introducing the v1 32-bit-minus-16-bit age comparison makes RTL disagree with Python after tick 65535 (the rollover test can detect the defect)
+PASS  E18 documented horizon: the 16-bit modular age aliases for a block unscanned > 65535 ticks (overdue clears at 65536 for 150 ticks); Python and RTL agree (see E15 long66k_all_active_alias)
+  PASS  RTL==Python  orig_evid_ad0                        ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_ad0_fe14                   ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_ad0_reset300               ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_ad1                        ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_ad1_fe14                   ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_ad1_reset300               ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_evid_baseline_mode              ticks=   600 mismatches=0 
+  PASS  RTL==Python  hot_diag_recovery_arisk_persist      ticks=   600 mismatches=0 
+  PASS  RTL==Python  hot_diag_recovery_aflag              ticks=   600 mismatches=0 
+  PASS  RTL==Python  persistent_dfault                    ticks=   400 mismatches=0 
+  PASS  RTL==Python  persistent_safety_fair               ticks=   400 mismatches=0 
+  PASS  RTL==Python  fair_gap_wait                        ticks=    61 mismatches=0 
+  PASS  RTL==Python  evid_n1_m0                           ticks=   600 mismatches=0 
+  PASS  RTL==Python  evid_n5_m40                          ticks=   600 mismatches=0 
+  PASS  RTL==Python  long70k_periodic_idle                ticks= 70000 mismatches=0 
+  PASS  RTL==Python  long70k_hot_fairness_fail_events     ticks= 70000 mismatches=0 
+  PASS  RTL==Python  long70k_baseline                     ticks= 70000 mismatches=0 
+  PASS  RTL==Python  long66k_all_active_alias             ticks= 66500 mismatches=0 
+  PASS  RTL==Python  long70k_reset_midway                 ticks= 70000 mismatches=0 
+PASS  E15 RTL vs Python full decision + internal-state traces incl. >65535-tick rollover (353961 ticks, 52 columns/tick)
+
+STEP-2A DIRECTED TESTS: 18/18 passed
+rc=0 elapsed=129s

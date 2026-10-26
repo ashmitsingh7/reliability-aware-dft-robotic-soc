@@ -1,0 +1,9 @@
+PASS  B01 DIAG component has no detection table: it never detects any fault; a PARTIAL+DIAG decision fails for a fault iff detect_partial=1
+PASS  B02 over all 2451 flagged episodes (evidence profile): flag cleared while fault persists  <=>  detect_partial == 0 (117 vs 0 exceptions)
+PASS  B03 every flagged-and-cleared case is a diagnostic that cannot observe the fault: detect_full=1, detect_partial=0, diag decisions all PARTIAL_SCAN+DIAG and all PASS; unresolved bit clears after the first pass
+PASS  B04 partial-blind but detectable faults = 119 = 117 flagged-and-cleared + 2 injected too late to be detected
+PASS  B05 coverage gap vs N=20 is entirely injections in the last 18 ticks: 62 N20-only faults, all injected at tick >= 581, none with a capable adaptive test after injection; every injection before tick 581 is detected by all profiles (except 2 undetectable faults)
+PASS  B06 raw-log check: N=20 detects all 62 with the FULL_SCAN at tick 599 (the last tick of the mission); the adaptive run has no later full scan of those blocks than tick 581
+PASS  B07 protected artifacts unchanged since the Step-2B pre-edit checksum list (results/, results_step1/, results_step2a/, rtl/, tb/, docs/ and pre-existing python/)
+
+STEP-2B CHARACTERIZATION TESTS: 7/7 passed

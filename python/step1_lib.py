@@ -52,7 +52,8 @@ def refine_header(p: Params):
         (("REC_EN", p.recov_en), ("REC_N", p.recov_n), ("MARGIN", p.reentry_margin), ("SWEEP_PERSIST", p.sweep_persist),
          ("STARVE_EN", p.starve_en), ("OVERDUE_T", p.overdue_ticks), ("FAIR_GAP", p.fair_gap),
          ("EVID_EN", p.evid_en), ("ARISK_DEG", p.arisk_deg),
-         ("OBS_EN", p.obs_en), ("ESC_EN", p.esc_en), ("ESC_GAP", p.esc_gap), ("STALE_EN", p.stale_en))]) + "\n"
+         ("OBS_EN", p.obs_en), ("ESC_EN", p.esc_en), ("ESC_GAP", p.esc_gap), ("STALE_EN", p.stale_en),
+         ("FAIR_UNRES_EN", p.fair_unres_en))]) + "\n"
 
 def write_mem(tr, path, fe=None, fc=None):
     """fc: Step-3 failing-class events {tick: packed 20-bit word, 4 bits per block}.  Always written (112-bit trace words)."""

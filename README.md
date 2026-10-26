@@ -1,4 +1,4 @@
-k# Reliability-Aware Design-for-Test for Autonomous Robotic SoCs
+# Reliability-Aware Design-for-Test for Autonomous Robotic SoCs
 
 **Research, RTL Implementation, and Simulation-Based Verification**
 

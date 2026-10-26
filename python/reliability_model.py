@@ -45,6 +45,7 @@ class Params:
     esc_en: int = 0                                  # (needs obs_en) escalate a flagged block whose evidence needs FULL depth to a FULL+DIAG decision, rate-limited
     esc_gap: int = 10                                # min DEGRADED ticks between escalations (first one is immediate after reset)
     stale_en: int = 0                                # per-block stale bit on the 16-bit lastfull age: removes aliasing beyond 65,535 ticks
+    fair_unres_en: int = 0                           # permit an overdue, unflagged block's fairness FULL+DIAG even during mission-active DEGRADED ticks while another flagged block retains unresolved evidence
 
 def load_stats():
     return json.load(open(RESULTS + "/atpg_stats.json"))
@@ -182,14 +183,16 @@ class Manager:
             unres_flagged = sum((1 << b) for b in range(NB) if self.unres[b]) & self.degmask
             # fairness-slot decision cause, recorded directly by the scheduler (Step-2A):
             # 1 mission active (no eligible window)  2 starve_en off  3 fair_gap not elapsed  5 no overdue unflagged candidate
-            # 4 window+gap+candidate exist but an unresolved diagnostic fault on a flagged block withholds the slot  6 granted
-            if mission_active: fcause = 1
+            # 4 window+gap+candidate exist but an unresolved diagnostic fault on a flagged block withholds the slot; 6 granted.
+            # fair_unres_en is the narrow Step-3 exemption: it never clears or changes the flagged block's evidence,
+            # but stops that evidence from globally withholding a healthy block's overdue full scan.
+            if mission_active and not (p.fair_unres_en and unres_flagged != 0): fcause = 1
             elif not p.starve_en: fcause = 2
-            elif self.fair < p.fair_gap: fcause = 3
+            elif self.fair < p.fair_gap and not (p.fair_unres_en and unres_flagged != 0): fcause = 3
             elif cand == 0: fcause = 5
-            elif unres_flagged != 0: fcause = 4
+            elif unres_flagged != 0 and not p.fair_unres_en: fcause = 4
             else: fcause = 6
-            if p.starve_en and not mission_active and self.fair >= p.fair_gap and unres_flagged == 0 and cand != 0:
+            if p.starve_en and (not mission_active or (p.fair_unres_en and unres_flagged != 0)) and (self.fair >= p.fair_gap or (p.fair_unres_en and unres_flagged != 0)) and (p.fair_unres_en or unres_flagged == 0) and cand != 0:
                 blk = argmax([b for b in range(NB) if (cand >> b) & 1])
                 tset = FULL | DIAG | (MBIST if blk == REGFILE else 0); valid = 1; reason = 5
                 self.fair = 0; self.lastfull[blk] = t & 0xFFFF; lf_upd[blk] = 1

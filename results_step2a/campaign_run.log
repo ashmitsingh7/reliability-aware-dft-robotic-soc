@@ -1,0 +1,21 @@
+v1_adaptive            cov 0.8231  tot_cyc    283671  interrupt     67690  mean_lat 319349
+fixed_N5               cov 0.9992  tot_cyc   1161120  interrupt    832136  mean_lat 55171
+fixed_N10              cov 0.9992  tot_cyc    580560  interrupt    425744  mean_lat 105430
+fixed_N20              cov 0.9992  tot_cyc    290280  interrupt    222548  mean_lat 206504
+fixed_N40              cov 0.9992  tot_cyc    145140  interrupt    125788  mean_lat 404833
+fixed_N80              cov 0.9416  tot_cyc     67732  interrupt     58056  mean_lat 812891
+s1_recovery_only       cov 0.9746  tot_cyc    268155  interrupt     13852  mean_lat 333458
+s1_all3                cov 0.9746  tot_cyc    253151  interrupt     13435  mean_lat 343846
+s2a_all3_evid          cov 0.9746  tot_cyc    250156  interrupt      9544  mean_lat 348667
+s2a_all3_evid_aflag    cov 0.9746  tot_cyc    253151  interrupt     13435  mean_lat 343846
+  closed-loop v1_adaptive            episodes 2515 flagged 2076 cleared-while-persisting 94
+  closed-loop fixed_N5               episodes 2515 flagged 833 cleared-while-persisting 0
+  closed-loop fixed_N10              episodes 2515 flagged 833 cleared-while-persisting 0
+  closed-loop fixed_N20              episodes 2515 flagged 833 cleared-while-persisting 0
+  closed-loop fixed_N40              episodes 2515 flagged 833 cleared-while-persisting 0
+  closed-loop fixed_N80              episodes 2515 flagged 833 cleared-while-persisting 0
+  closed-loop s1_recovery_only       episodes 2515 flagged 2459 cleared-while-persisting 275
+  closed-loop s1_all3                episodes 2515 flagged 2459 cleared-while-persisting 275
+  closed-loop s2a_all3_evid          episodes 2515 flagged 2451 cleared-while-persisting 117
+  closed-loop s2a_all3_evid_aflag    episodes 2515 flagged 2459 cleared-while-persisting 275
+rc=0 elapsed=284s

@@ -1,0 +1,53 @@
+PASS  S01 every Step-3 switch defaults OFF; refined(evid_en=1) profile unchanged (obs_en=esc_en=stale_en=0)
+PASS  S02 obs_en=0: the failing-class input is ignored; decisions and all state columns are identical to the Step-2A model for arbitrary res_cls values
+PASS  S03 the Step-2B flaw reproduces without obs_en (flag clears while the fault persists) and is gone with obs_en: flag never clears, unres stays set, okc stays 0
+PASS  S04 PARTIAL-class evidence is cleared by recov_n partial+DIAG passes with obs_en (no needless escalation); an UNKNOWN class (0) is treated as needing FULL
+PASS  S05 evidence accumulates: a PARTIAL-class failure followed by a FULL-class failure while unresolved needs FULL depth; a later partial pass must not clear it
+PASS  S06 a dominating pass (FULL+DIAG) clears unres and nf and counts toward recovery; a non-dominating pass (PARTIAL+DIAG while nf=1) does neither
+PASS  S07 escalation (persistent fault): FULL+DIAG on the flagged block (+MBIST for regfile), spacing exactly esc_gap+1 ticks, first one immediate, flag never clears, lastfull updated
+PASS  S08 transient fault: obs_en alone leaves the block flagged forever (no path to a FULL diagnostic); obs_en+esc_en recovers within esc_gap+1+recov_n+1 ticks, only after the fault ended, via a FULL pass
+PASS  S09 escalation needs obs_en AND esc_en AND nf: esc_en without obs_en never escalates; obs_en with PARTIAL-class evidence never escalates; baseline mode never escalates
+PASS  S10 safety/architecture invariants with escalation on: reason 6 only in DEGRADED, only on a flagged block with nf set, one decision per tick, never in baseline mode; v1 invariant 'ACTIVE runs ONLINE only' holds
+PASS  F01 fairness exemption: a persistent unresolved fault never clears, while every healthy block remains within overdue_ticks + fair_gap; verified for obs_en and obs_en+esc_en
+PASS  S11 stale bit: without it a block unscanned for > 65535 ticks wraps back to 'not overdue' (documented Step-2A horizon); with stale_en it stays overdue until its next full scan, then clears
+PASS  S12 stale bit never changes behaviour when blocks are scanned regularly: identical decisions/state for stale_en=0/1 on a 70,000-tick periodic-idle trace and on the original mission
+PASS  S13 campaign (2,515 persistent-fault episodes): the Step-2A reference reproduces the 117 premature clearances; obs_en and obs_en+esc_en have 0 (all fault tables, same injection draw)
+PASS  S14 the campaign's reference profile reproduces the Step-2A closed-loop episodes exactly (flag tick, clear tick) for all 2,515 faults, so the new runner is trusted
+PASS  S15 transient episodes: obs-only recovers none of its flagged blocks; obs+esc recovers every flagged episode whose fault ended >= 30 ticks before the mission end and never clears while the fault is present
+      s2a_all3_evid    persistent mean_interruption_cycles(all) 469680  flagged 481695  escalation part 0
+      s3_obs           persistent mean_interruption_cycles(all) 484385  flagged 496784  escalation part 0
+      s3_obs_esc       persistent mean_interruption_cycles(all) 523653  flagged 537078  escalation part 84649
+PASS  S16 the cost of escalation is reported, not hidden: mean interruption cycles per flagged persistent episode obs_esc > obs > reference is not assumed; the numbers are in campaign_summary.json (informational)
+  PASS  RTL==Python  rand_cls_obs                         ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_obs_esc                     ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_obs_esc_gap0                ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_obs_esc_gap3_n1_m0          ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_obs_esc_reset300            ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_baseline_mode               ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_recov_only_obs              ticks=   600 mismatches=0 
+  PASS  RTL==Python  rand_cls_obs_starve_overdue20        ticks=   600 mismatches=0 
+  PASS  RTL==Python  persistent_b1_fair_obs               ticks=   180 mismatches=0 
+  PASS  RTL==Python  persistent_b1_fair_obs_esc           ticks=   180 mismatches=0 
+  PASS  RTL==Python  accumulate_full_then_partial         ticks=   400 mismatches=0 
+  PASS  RTL==Python  accumulate_partial_then_full         ticks=   400 mismatches=0 
+  PASS  RTL==Python  persistent_b0_obs_esc                ticks=   400 mismatches=0 
+  PASS  RTL==Python  persistent_b1_obs_esc                ticks=   400 mismatches=0 
+  PASS  RTL==Python  persistent_b4_obs_esc                ticks=   400 mismatches=0 
+  PASS  RTL==Python  transient_b1_obs_esc                 ticks=   400 mismatches=0 
+  PASS  RTL==Python  transient_b1_obs_only                ticks=   400 mismatches=0 
+  PASS  RTL==Python  orig_mission_persistent_comm         ticks=   600 mismatches=0 
+  PASS  RTL==Python  orig_mission_transient_regfile       ticks=   600 mismatches=0 
+  PASS  RTL==Python  long66k_all_active_stale             ticks= 66500 mismatches=0 
+  PASS  RTL==Python  long70k_stale_scan_after_wrap        ticks= 70000 mismatches=0 
+  PASS  RTL==Python  long70k_stale_reset_midway           ticks= 70000 mismatches=0 
+  PASS  RTL==Python  long70k_stale_all_features           ticks= 70000 mismatches=0 
+PASS  S17 RTL vs Python: decisions + all internal-state columns, incl. nf/esc/lfstale, obs/esc/stale on, resets, baseline mode, >65535-tick horizon (285660 ticks, 55 columns/tick)
+      mutant M1 dominance check removed (any DIAG pass clears): 400 ticks, 345 mismatches tick 55: unres py=2 rtl=0, okc1 py=0 rtl=1, nf py=2 rtl=0
+      mutant M2 escalation rate limit removed: 400 ticks, 346 mismatches tick 54: tset py=18 rtl=17, reason py=3 rtl=6, lastfull1 py=53 rtl=54, esc py=1 rtl=0
+      mutant M3 unknown failure class not treated as needing FULL: 600 ticks, 381 mismatches tick 188: nf py=8 rtl=0
+      mutant M4 nf evidence does not accumulate across failures: 400 ticks, 388 mismatches tick 12: nf py=8 rtl=0
+      mutant M5 stale bit never set: 66500 ticks, 965 mismatches tick 65535: lfstale py=31 rtl=0
+      mutant M6 escalation does not refresh lastfull: 600 ticks, 511 mismatches tick 34: lastfull0 py=34 rtl=5
+PASS  S18 test sensitivity: each of 6 injected RTL defects (dominance, rate limit, unknown class, accumulation, stale set, lastfull refresh) is caught by the equivalence traces
+
+STEP-3 PHASE-1 TESTS: 19/19 passed

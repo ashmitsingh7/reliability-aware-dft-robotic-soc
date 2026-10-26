@@ -1,0 +1,226 @@
+{
+ "flag_clearance": {
+  "cases": 117,
+  "reported_in_step2a": 117,
+  "by_root_cause": {
+   "PARTIAL_SCAN_NON_OBSERVING": 117
+  },
+  "by_block": {
+   "safety": 8,
+   "motor": 27,
+   "encoder": 14,
+   "comm": 12,
+   "regfile": 56
+  },
+  "by_flagging_test": {
+   "ONLINE": 26,
+   "FULL_SCAN": 35,
+   "FULL_SCAN+MBIST": 56
+  },
+  "all_detect_partial_zero": true,
+  "all_detect_full_one": true,
+  "diag_selected_tests": {
+   "PARTIAL_SCAN+DIAG": 117
+  },
+  "all_diag_results_pass": true,
+  "unresolved_bit_cleared_after_one_pass": 117,
+  "re_failed_later": 117,
+  "flap_cases_multiple_flag_cycles": 117,
+  "python_replay_clear_tick_equals_episode": true,
+  "rtl_equals_python_on_episode": "117/117",
+  "flagged_population_crosstab_all_2451_flagged_episodes": {
+   "detect_partial=1,cleared_while_persisting=0": 2334,
+   "detect_partial=0,cleared_while_persisting=1": 117
+  },
+  "DIAG_component_has_no_detection_table": true
+ },
+ "missed_by_adaptive_detected_by_N20": {
+  "count": 62,
+  "by_category": {
+   "IDLE_WINDOW_PRESENT_BUT_SWEEP_REARM_GAP_NOT_ELAPSED": 27,
+   "NO_MISSION_IDLE_WINDOW_BEFORE_MISSION_END": 35,
+   "UNDETECTABLE_UNDER_IMPLEMENTED_MODEL": 2
+  },
+  "by_block": {
+   "regfile": 48,
+   "safety": 4,
+   "motor": 3,
+   "comm": 4,
+   "encoder": 3
+  },
+  "injection_tick_min": 581,
+  "injection_tick_max": 598,
+  "all_N20_detections_by": {
+   "FULL_SCAN": 62
+  },
+  "adaptive_block_gap_between_full_scans": {
+   "safety": {
+    "max": 89,
+    "mean": 27.6,
+    "last_full_scan_tick": 579
+   },
+   "motor": {
+    "max": 90,
+    "mean": 27.4,
+    "last_full_scan_tick": 577
+   },
+   "encoder": {
+    "max": 86,
+    "mean": 27.4,
+    "last_full_scan_tick": 578
+   },
+   "comm": {
+    "max": 89,
+    "mean": 27.5,
+    "last_full_scan_tick": 580
+   },
+   "regfile": {
+    "max": 55,
+    "mean": 27.5,
+    "last_full_scan_tick": 581
+   }
+  }
+ },
+ "coverage_vs_injection_tick_detected_over_total": {
+  "0-99": {
+   "N20": [
+    413,
+    413
+   ],
+   "s1_all3": [
+    413,
+    413
+   ],
+   "s2a_evid": [
+    413,
+    413
+   ]
+  },
+  "100-199": {
+   "N20": [
+    443,
+    444
+   ],
+   "s1_all3": [
+    443,
+    444
+   ],
+   "s2a_evid": [
+    443,
+    444
+   ]
+  },
+  "200-299": {
+   "N20": [
+    435,
+    435
+   ],
+   "s1_all3": [
+    435,
+    435
+   ],
+   "s2a_evid": [
+    435,
+    435
+   ]
+  },
+  "300-399": {
+   "N20": [
+    417,
+    417
+   ],
+   "s1_all3": [
+    417,
+    417
+   ],
+   "s2a_evid": [
+    417,
+    417
+   ]
+  },
+  "400-499": {
+   "N20": [
+    433,
+    433
+   ],
+   "s1_all3": [
+    433,
+    433
+   ],
+   "s2a_evid": [
+    433,
+    433
+   ]
+  },
+  "500-559": {
+   "N20": [
+    233,
+    234
+   ],
+   "s1_all3": [
+    233,
+    234
+   ],
+   "s2a_evid": [
+    233,
+    234
+   ]
+  },
+  "560-580": {
+   "N20": [
+    62,
+    62
+   ],
+   "s1_all3": [
+    62,
+    62
+   ],
+   "s2a_evid": [
+    62,
+    62
+   ]
+  },
+  "581-599": {
+   "N20": [
+    77,
+    77
+   ],
+   "s1_all3": [
+    15,
+    77
+   ],
+   "s2a_evid": [
+    15,
+    77
+   ]
+  }
+ },
+ "latency_both_detected": {
+  "population": 2451,
+  "N20": {
+   "n": 2451,
+   "mean": 207032.76744186046,
+   "median": 207965,
+   "p95": 382898
+  },
+  "s1_all3": {
+   "n": 2451,
+   "mean": 343845.5181558548,
+   "median": 267088,
+   "p95": 886900
+  },
+  "s2a_evid": {
+   "n": 2451,
+   "mean": 348666.9698082415,
+   "median": 268036,
+   "p95": 902502
+  },
+  "delta_mean": 141634.20236638107
+ },
+ "populations": {
+  "both": 2451,
+  "N20_only": 62,
+  "neither": 2
+ }
+}
+DONE

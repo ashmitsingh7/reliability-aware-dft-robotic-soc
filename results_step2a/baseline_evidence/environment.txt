@@ -1,0 +1,8 @@
+date: Mon Oct 19 21:07:48 UTC 2026
+Linux vm 6.18.44-fc-v139 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+Python 3.12.3
+Icarus Verilog version 12.0 (stable) ()
+Yosys 0.33 (git sha1 2584903a060)
+numpy 2.4.4 pandas 3.0.2
+5ce425badd1f440f093086b80ead05d225fcbec0
+5b6e57a3926ad2022a00ff1970781881cbb99e99

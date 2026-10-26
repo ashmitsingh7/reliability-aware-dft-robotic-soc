@@ -14,3 +14,5 @@ localparam OBS_EN_P = 0;
 localparam ESC_EN_P = 0;
 localparam ESC_GAP_P = 10;
 localparam STALE_EN_P = 0;
+// Step-3 fairness exemption (DEFAULT OFF): unresolved evidence on a flagged block does not withhold overdue healthy-block scans when enabled.
+localparam FAIR_UNRES_EN_P = 0;
