@@ -1,15 +1,73 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+*.whl
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Synthesis/Simulation build artifacts
 build/*.vvp
 build/step1/
 build/step1_rtl/
 build/step3_rtl/
 build/step2a*/
+*.json
+*.stat
+*.vvp
+*.vcd
+*.wlf
+*.log
 
-# Local Python environment
-.venv/
-__pycache__/
-*.py[cod]
+# Yosys synthesis
+*.ys
+yosys_*
+
+# Verilator
+obj_dir/
+verilated_*
 
 # Local validation logs
 local_validation_*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Quartus/ModelSim
+db/
+incremental_db/
+output_files/
+work/
+*.qws
+*.rpt
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
